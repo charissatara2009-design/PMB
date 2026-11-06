@@ -1,0 +1,1853 @@
+/* ==================================================
+   RESET
+================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); /* Muat font Plus Jakarta Sans dari Google Fonts */
+
+* { /* Gaya untuk semua elemen */
+    margin: 0; /* Jarak luar elemen 0 */
+    padding: 0; /* Jarak dalam elemen 0 */
+    box-sizing: border-box; /* Lebar/tinggi sudah termasuk padding & border */
+} /* Akhir aturan semua elemen */
+
+:root { /* Gaya untuk variabel warna & ukuran global */
+    --app-primary: #b23a55; /* Variabel warna utama: #b23a55 */
+    --app-primary-dark: #8a2740; /* Variabel warna utama versi gelap: #8a2740 */
+    --app-primary-light: #f5d5dc; /* Variabel warna utama versi terang: #f5d5dc */
+    --app-accent-bg: #fdeef1; /* Variabel warna latar aksen: #fdeef1 */
+    --app-bg: #f8f4f6; /* Variabel warna latar halaman: #f8f4f6 */
+    --app-surface: #ffffff; /* Variabel warna permukaan kartu: #ffffff */
+    --app-text: #2b2229; /* Variabel warna teks utama: #2b2229 */
+    --app-muted: #8f8690; /* Variabel warna teks samar: #8f8690 */
+    --app-border: #f0e2e6; /* Variabel warna garis tepi: #f0e2e6 */
+    --app-shadow-sm: 0 2px 10px rgba(139, 39, 64, 0.06); /* Variabel bayangan kecil: 0 2px 10px rgba(139, 39, 64, 0.06) */
+    --app-shadow-md: 0 10px 28px rgba(139, 39, 64, 0.10); /* Variabel bayangan sedang: 0 10px 28px rgba(139, 39, 64, 0.10) */
+    --app-shadow-lg: 0 20px 48px rgba(139, 39, 64, 0.16); /* Variabel bayangan besar: 0 20px 48px rgba(139, 39, 64, 0.16) */
+    --app-radius-sm: 12px; /* Variabel sudut melengkung kecil: 12px */
+    --app-radius-md: 16px; /* Variabel sudut melengkung sedang: 16px */
+    --app-radius-lg: 22px; /* Variabel sudut melengkung besar: 22px */
+} /* Akhir aturan variabel warna & ukuran global */
+
+body { /* Gaya untuk halaman (body) */
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; /* Jenis huruf 'Plus Jakarta Sans', Arial, Helvetica, sans... */
+    background: /* Latar belakang berlapis (lapisan di baris berikut) */
+        radial-gradient(circle at 0% 0%, rgba(178, 58, 85, 0.05), transparent 40%), /* Lapisan gradasi melingkar */
+        radial-gradient(circle at 100% 100%, rgba(178, 58, 85, 0.05), transparent 40%), /* Lapisan gradasi melingkar */
+        var(--app-bg); /* Warna dasar dari variabel */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+} /* Akhir aturan halaman (body) */
+
+a { /* Gaya untuk link */
+    text-decoration: none; /* Hilangkan garis bawah link */
+    color: inherit; /* Warna teks inherit */
+} /* Akhir aturan link */
+
+button, /* Selektor tombol, berbagi gaya dengan selektor berikutnya */
+input, /* Selektor kolom input, berbagi gaya dengan selektor berikutnya */
+select { /* Gaya untuk kotak pilihan */
+    font-family: inherit; /* Jenis huruf inherit */
+} /* Akhir aturan kotak pilihan */
+
+::selection { /* Gaya untuk ::selection (teks yang diblok) */
+    background: var(--app-primary-light); /* Latar belakang var(--app-primary-light) */
+    color: var(--app-primary-dark); /* Warna teks var(--app-primary-dark) */
+} /* Akhir aturan ::selection (teks yang diblok) */
+
+::-webkit-scrollbar { /* Gaya untuk ::-webkit-scrollbar (scrollbar) */
+    width: 10px; /* Lebar 10px */
+    height: 10px; /* Tinggi 10px */
+} /* Akhir aturan ::-webkit-scrollbar (scrollbar) */
+
+::-webkit-scrollbar-track { /* Gaya untuk ::-webkit-scrollbar-track (scrollbar) */
+    background: transparent; /* Latar belakang transparent */
+} /* Akhir aturan ::-webkit-scrollbar-track (scrollbar) */
+
+::-webkit-scrollbar-thumb { /* Gaya untuk ::-webkit-scrollbar-thumb (scrollbar) */
+    background: #e7c7cf; /* Latar belakang #e7c7cf */
+    border-radius: 10px; /* Sudut melengkung 10px */
+} /* Akhir aturan ::-webkit-scrollbar-thumb (scrollbar) */
+
+::-webkit-scrollbar-thumb:hover { /* Gaya untuk ::-webkit-scrollbar-thumb:hover (saat kursor diarahkan) */
+    background: var(--app-primary); /* Latar belakang var(--app-primary) */
+} /* Akhir aturan ::-webkit-scrollbar-thumb:hover (saat kursor diarahkan) */
+
+@keyframes appFadeInUp { /* Definisi animasi bernama appFadeInUp */
+    from { /* Keadaan awal animasi */
+        opacity: 0; /* Transparansi 0 */
+        transform: translateY(14px); /* Ubah bentuk/putar elemen: translateY(14px) */
+    } /* Akhir aturan tahap animasi */
+    to { /* Keadaan akhir animasi */
+        opacity: 1; /* Transparansi 1 */
+        transform: translateY(0); /* Ubah bentuk/putar elemen: translateY(0) */
+    } /* Akhir aturan tahap animasi */
+} /* Akhir definisi animasi */
+
+.welcome-card, /* Selektor kartu sambutan, berbagi gaya dengan selektor berikutnya */
+.dashboard-cards > *, /* Selektor semua elemen di dalam deretan kartu status, berbagi gaya dengan selektor berikutnya */
+.stats-grid > *, /* Selektor semua elemen di dalam deretan statistik, berbagi gaya dengan selektor berikutnya */
+.content-card, /* Selektor kartu konten, berbagi gaya dengan selektor berikutnya */
+.test-number-card, /* Selektor kartu nomor test, berbagi gaya dengan selektor berikutnya */
+.result-card, /* Selektor kartu hasil, berbagi gaya dengan selektor berikutnya */
+.nim-card, /* Selektor kartu NIM, berbagi gaya dengan selektor berikutnya */
+.question-card, /* Selektor kartu soal, berbagi gaya dengan selektor berikutnya */
+.empty-card, /* Selektor kartu kosong, berbagi gaya dengan selektor berikutnya */
+.auth-box, /* Selektor auth box, berbagi gaya dengan selektor berikutnya */
+.register-box { /* Gaya untuk register box */
+    animation: appFadeInUp 0.45s ease both; /* Jalankan animasi appFadeInUp 0.45s ease both */
+} /* Akhir aturan register box */
+
+.dashboard-cards > *:nth-child(2) { animation-delay: 0.05s; } /* Gaya untuk semua elemen di dalam deretan kartu status: Tunda mulai animasi 0.05s */
+.dashboard-cards > *:nth-child(3) { animation-delay: 0.10s; } /* Gaya untuk semua elemen di dalam deretan kartu status: Tunda mulai animasi 0.10s */
+.dashboard-cards > *:nth-child(4) { animation-delay: 0.15s; } /* Gaya untuk semua elemen di dalam deretan kartu status: Tunda mulai animasi 0.15s */
+
+
+/* ==================================================
+   LANDING PAGE
+================================================== */
+
+:root { /* Gaya untuk variabel warna & ukuran global */
+    --landing-ink: #20252a; /* Variabel warna tinta teks: #20252a */
+    --landing-muted: #6d7075; /* Variabel warna teks samar: #6d7075 */
+    --landing-red: #a64059; /* Variabel warna merah: #a64059 */
+    --landing-pink: #faeef1; /* Variabel warna pink: #faeef1 */
+    --landing-line: #eadfe1; /* Variabel warna garis: #eadfe1 */
+} /* Akhir aturan variabel warna & ukuran global */
+
+html { /* Gaya untuk seluruh dokumen */
+    scroll-behavior: smooth; /* Gulir halaman dengan halus */
+} /* Akhir aturan seluruh dokumen */
+
+.landing-page { /* Gaya untuk landing page */
+    background: #fff; /* Latar belakang #fff */
+    color: var(--landing-ink); /* Warna teks var(--landing-ink) */
+    font-family: Arial, Helvetica, sans-serif; /* Jenis huruf Arial, Helvetica, sans-serif */
+} /* Akhir aturan landing page */
+
+.landing-header { /* Gaya untuk landing header */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    background: rgba(255, 255, 255, 0.96); /* Latar belakang rgba(255, 255, 255, 0.96) */
+    border-bottom: 1px solid #f0eaeb; /* Garis tepi bawah 1px solid #f0eaeb */
+    display: flex; /* Susun isi dengan flexbox */
+    gap: 30px; /* Jarak antar elemen 30px */
+    justify-content: space-between; /* Posisi isi searah baris: space-between */
+    min-height: 58px; /* Tinggi minimum 58px */
+    padding: 0 max(24px, calc((100% - 1200px) / 2)); /* Jarak dalam elemen 0 max(24px, calc((100% - 1200px) / 2)) */
+    position: sticky; /* Posisi elemen: sticky */
+    top: 0; /* Jarak dari atas 0 */
+    z-index: 10; /* Urutan tumpukan 10 (makin besar makin di atas) */
+} /* Akhir aturan landing header */
+
+.landing-brand { /* Gaya untuk landing brand */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    color: var(--landing-red); /* Warna teks var(--landing-red) */
+    display: flex; /* Susun isi dengan flexbox */
+    font-family: Georgia, serif; /* Jenis huruf Georgia, serif */
+    font-size: 16px; /* Ukuran huruf 16px */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    gap: 8px; /* Jarak antar elemen 8px */
+    white-space: nowrap; /* Teks tidak boleh turun baris */
+} /* Akhir aturan landing brand */
+
+.brand-mark { /* Gaya untuk brand mark */
+    border-bottom: 4px solid var(--landing-red); /* Garis tepi bawah 4px solid var(--landing-red) */
+    font-family: Arial, Helvetica, sans-serif; /* Jenis huruf Arial, Helvetica, sans-serif */
+    font-size: 11px; /* Ukuran huruf 11px */
+    letter-spacing: 1px; /* Jarak antar huruf 1px */
+    line-height: 16px; /* Tinggi baris 16px */
+    transform: skew(-10deg); /* Ubah bentuk/putar elemen: skew(-10deg) */
+} /* Akhir aturan brand mark */
+
+.landing-nav { /* Gaya untuk landing nav */
+    display: flex; /* Susun isi dengan flexbox */
+    gap: 28px; /* Jarak antar elemen 28px */
+    height: 58px; /* Tinggi 58px */
+} /* Akhir aturan landing nav */
+
+.landing-nav a, /* Selektor link di dalam landing nav, berbagi gaya dengan selektor berikutnya */
+.header-login { /* Gaya untuk header login */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    color: #4e5155; /* Warna teks #4e5155 */
+    display: flex; /* Susun isi dengan flexbox */
+    font-size: 12px; /* Ukuran huruf 12px */
+    position: relative; /* Posisi elemen: relative */
+} /* Akhir aturan header login */
+
+.landing-nav a:hover, /* Selektor link di dalam landing nav (saat kursor diarahkan), berbagi gaya dengan selektor berikutnya */
+.landing-nav a.active, /* Selektor menu aktif di dalam landing nav, berbagi gaya dengan selektor berikutnya */
+.header-login:hover { /* Gaya untuk header login (saat kursor diarahkan) */
+    color: var(--landing-red); /* Warna teks var(--landing-red) */
+} /* Akhir aturan header login (saat kursor diarahkan) */
+
+.landing-nav a.active::after { /* Gaya untuk menu aktif di dalam landing nav (elemen tambahan setelah isi) */
+    background: var(--landing-red); /* Latar belakang var(--landing-red) */
+    bottom: 0; /* Jarak dari bawah 0 */
+    content: ""; /* Isi elemen tambahan: "" */
+    height: 2px; /* Tinggi 2px */
+    left: 0; /* Jarak dari kiri 0 */
+    position: absolute; /* Posisi elemen: absolute */
+    right: 0; /* Jarak dari kanan 0 */
+} /* Akhir aturan menu aktif di dalam landing nav (elemen tambahan setelah isi) */
+
+.header-login { /* Gaya untuk header login */
+    border-left: 1px solid var(--landing-line); /* Garis tepi kiri 1px solid var(--landing-line) */
+    padding-left: 24px; /* Jarak dalam kiri 24px */
+} /* Akhir aturan header login */
+
+.landing-hero { /* Gaya untuk landing hero */
+    background: var(--landing-pink); /* Latar belakang var(--landing-pink) */
+    display: grid; /* Tipe tampilan: grid */
+    grid-template-columns: minmax(360px, 0.9fr) 1.1fr; /* Susunan kolom grid minmax(360px, 0.9fr) 1.1fr */
+    min-height: 390px; /* Tinggi minimum 390px */
+} /* Akhir aturan landing hero */
+
+.hero-copy { /* Gaya untuk hero copy */
+    align-self: center; /* Posisi sendiri di sumbu silang: center */
+    justify-self: center; /* Posisi sendiri searah baris: center */
+    margin-left: 0; /* Jarak luar kiri 0 */
+    max-width: 510px; /* Lebar maksimum 510px */
+    padding: 54px 30px 54px 0; /* Jarak dalam elemen 54px 30px 54px 0 */
+    width: min(100%, 510px); /* Lebar min(100%, 510px) */
+} /* Akhir aturan hero copy */
+
+.eyebrow { /* Gaya untuk eyebrow */
+    color: var(--landing-red); /* Warna teks var(--landing-red) */
+    font-size: 10px; /* Ukuran huruf 10px */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    letter-spacing: 3px; /* Jarak antar huruf 3px */
+    margin-bottom: 9px; /* Jarak luar bawah 9px */
+    text-transform: uppercase; /* Ubah teks jadi huruf kapital */
+} /* Akhir aturan eyebrow */
+
+.hero-copy h1 { /* Gaya untuk judul h1 di dalam hero copy */
+    font-family: Georgia, serif; /* Jenis huruf Georgia, serif */
+    font-size: clamp(34px, 4vw, 54px); /* Ukuran huruf clamp(34px, 4vw, 54px) */
+    line-height: 1.03; /* Tinggi baris 1.03 */
+    margin-bottom: 14px; /* Jarak luar bawah 14px */
+} /* Akhir aturan judul h1 di dalam hero copy */
+
+.hero-copy h1 em { /* Gaya untuk em di dalam hero copy */
+    color: var(--landing-red); /* Warna teks var(--landing-red) */
+    font-style: normal; /* Gaya huruf normal */
+} /* Akhir aturan em di dalam hero copy */
+
+.hero-description, /* Selektor hero description, berbagi gaya dengan selektor berikutnya */
+.about-copy > p, /* Selektor paragraf di dalam about copy, berbagi gaya dengan selektor berikutnya */
+.facilities-copy > p { /* Gaya untuk paragraf di dalam facilities copy */
+    color: var(--landing-muted); /* Warna teks var(--landing-muted) */
+    font-size: 13px; /* Ukuran huruf 13px */
+    line-height: 1.6; /* Tinggi baris 1.6 */
+    max-width: 440px; /* Lebar maksimum 440px */
+} /* Akhir aturan paragraf di dalam facilities copy */
+
+.landing-button { /* Gaya untuk landing button */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    background: linear-gradient(135deg, var(--landing-red), #853348); /* Latar belakang linear-gradient(135deg, var(--landing-red), #853348) */
+    border-radius: 24px; /* Sudut melengkung 24px */
+    box-shadow: 0 10px 24px rgba(166, 64, 89, 0.3); /* Bayangan 0 10px 24px rgba(166, 64, 89, 0.3) */
+    color: #fff; /* Warna teks #fff */
+    display: inline-flex; /* Tipe tampilan: inline-flex */
+    font-size: 12px; /* Ukuran huruf 12px */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    gap: 14px; /* Jarak antar elemen 14px */
+    margin-top: 20px; /* Jarak luar atas 20px */
+    padding: 13px 21px; /* Jarak dalam elemen 13px 21px */
+    transition: box-shadow 0.2s, transform 0.2s; /* Perubahan halus (animasi) pada box-shadow 0.2s, transform 0.2s */
+} /* Akhir aturan landing button */
+
+.landing-button:hover { /* Gaya untuk landing button (saat kursor diarahkan) */
+    box-shadow: 0 14px 30px rgba(166, 64, 89, 0.4); /* Bayangan 0 14px 30px rgba(166, 64, 89, 0.4) */
+    transform: translateY(-2px); /* Ubah bentuk/putar elemen: translateY(-2px) */
+} /* Akhir aturan landing button (saat kursor diarahkan) */
+
+.hero-visual, /* Selektor hero visual, berbagi gaya dengan selektor berikutnya */
+.section-photo, /* Selektor section photo, berbagi gaya dengan selektor berikutnya */
+.facility-photo { /* Gaya untuk facility photo */
+    background-position: center; /* Posisi gambar latar center */
+    background-size: cover; /* Ukuran gambar latar cover */
+} /* Akhir aturan facility photo */
+
+.hero-visual { /* Gaya untuk hero visual */
+    background-image: linear-gradient(90deg, rgba(250, 238, 241, 0.18), transparent 30%), url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1400&q=85"); /* Gambar latar linear-gradient(90deg, rgba(250, 238, 241, ... */
+    min-height: 390px; /* Tinggi minimum 390px */
+} /* Akhir aturan hero visual */
+
+.landing-section { /* Gaya untuk landing section */
+    margin: auto; /* Jarak luar elemen auto */
+    max-width: 1200px; /* Lebar maksimum 1200px */
+    padding-left: 24px; /* Jarak dalam kiri 24px */
+    padding-right: 24px; /* Jarak dalam kanan 24px */
+} /* Akhir aturan landing section */
+
+.about-section { /* Gaya untuk about section */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    display: grid; /* Tipe tampilan: grid */
+    gap: 48px; /* Jarak antar elemen 48px */
+    grid-template-columns: 0.95fr 1.05fr; /* Susunan kolom grid 0.95fr 1.05fr */
+    padding-bottom: 55px; /* Jarak dalam bawah 55px */
+    padding-top: 55px; /* Jarak dalam atas 55px */
+} /* Akhir aturan about section */
+
+.section-photo { /* Gaya untuk section photo */
+    min-height: 260px; /* Tinggi minimum 260px */
+} /* Akhir aturan section photo */
+
+.about-photo { /* Gaya untuk about photo */
+    background-image: url("https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&w=1000&q=85"); /* Gambar latar dari internet (Unsplash) */
+    border-radius: 16px; /* Sudut melengkung 16px */
+    box-shadow: 0 20px 44px rgba(166, 64, 89, 0.18); /* Bayangan 0 20px 44px rgba(166, 64, 89, 0.18) */
+} /* Akhir aturan about photo */
+
+.about-copy h2, /* Selektor judul h2 di dalam about copy, berbagi gaya dengan selektor berikutnya */
+.facilities-copy h2, /* Selektor judul h2 di dalam facilities copy, berbagi gaya dengan selektor berikutnya */
+.section-heading h2, /* Selektor judul h2 di dalam section heading, berbagi gaya dengan selektor berikutnya */
+.contact-section h2 { /* Gaya untuk judul h2 di dalam contact section */
+    font-family: Georgia, serif; /* Jenis huruf Georgia, serif */
+    font-size: clamp(25px, 3vw, 34px); /* Ukuran huruf clamp(25px, 3vw, 34px) */
+    line-height: 1.08; /* Tinggi baris 1.08 */
+    margin-bottom: 12px; /* Jarak luar bawah 12px */
+} /* Akhir aturan judul h2 di dalam contact section */
+
+.about-copy h2 span { /* Gaya untuk teks span di dalam about copy */
+    color: var(--landing-red); /* Warna teks var(--landing-red) */
+} /* Akhir aturan teks span di dalam about copy */
+
+.value-list { /* Gaya untuk value list */
+    display: grid; /* Tipe tampilan: grid */
+    gap: 18px; /* Jarak antar elemen 18px */
+    grid-template-columns: repeat(3, 1fr); /* Susunan kolom grid repeat(3, 1fr) */
+    margin-top: 24px; /* Jarak luar atas 24px */
+} /* Akhir aturan value list */
+
+.value-list strong, /* Selektor teks tebal di dalam value list, berbagi gaya dengan selektor berikutnya */
+.study-number { /* Gaya untuk study number */
+    color: var(--landing-red); /* Warna teks var(--landing-red) */
+    font-size: 12px; /* Ukuran huruf 12px */
+    font-weight: 700; /* Ketebalan huruf 700 */
+} /* Akhir aturan study number */
+
+.value-list h3 { /* Gaya untuk judul h3 di dalam value list */
+    font-size: 12px; /* Ukuran huruf 12px */
+    margin: 8px 0 5px; /* Jarak luar elemen 8px 0 5px */
+} /* Akhir aturan judul h3 di dalam value list */
+
+.value-list p, /* Selektor paragraf di dalam value list, berbagi gaya dengan selektor berikutnya */
+.study-card p { /* Gaya untuk paragraf di dalam study card */
+    color: var(--landing-muted); /* Warna teks var(--landing-muted) */
+    font-size: 11px; /* Ukuran huruf 11px */
+    line-height: 1.45; /* Tinggi baris 1.45 */
+} /* Akhir aturan paragraf di dalam study card */
+
+.study-section { /* Gaya untuk study section */
+    background: var(--landing-pink); /* Latar belakang var(--landing-pink) */
+    padding: 42px 0 50px; /* Jarak dalam elemen 42px 0 50px */
+} /* Akhir aturan study section */
+
+.section-heading { /* Gaya untuk section heading */
+    text-align: center; /* Rata teks center */
+} /* Akhir aturan section heading */
+
+.section-heading p:last-child { /* Gaya untuk paragraf di dalam section heading (item terakhir) */
+    color: var(--landing-muted); /* Warna teks var(--landing-muted) */
+    font-size: 12px; /* Ukuran huruf 12px */
+} /* Akhir aturan paragraf di dalam section heading (item terakhir) */
+
+.study-grid { /* Gaya untuk study grid */
+    display: grid; /* Tipe tampilan: grid */
+    gap: 15px; /* Jarak antar elemen 15px */
+    grid-template-columns: repeat(4, 1fr); /* Susunan kolom grid repeat(4, 1fr) */
+    margin-top: 25px; /* Jarak luar atas 25px */
+} /* Akhir aturan study grid */
+
+.study-card { /* Gaya untuk study card */
+    background: #fff; /* Latar belakang #fff */
+    border: 1px solid #f2e4e7; /* Garis tepi 1px solid #f2e4e7 */
+    border-radius: 12px; /* Sudut melengkung 12px */
+    min-height: 145px; /* Tinggi minimum 145px */
+    padding: 24px 20px; /* Jarak dalam elemen 24px 20px */
+    box-shadow: 0 4px 14px rgba(166, 64, 89, 0.05); /* Bayangan 0 4px 14px rgba(166, 64, 89, 0.05) */
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; /* Perubahan halus (animasi) pada transform 0.2s, box-shadow 0.2s, border-col... */
+} /* Akhir aturan study card */
+
+.study-card:hover { /* Gaya untuk study card (saat kursor diarahkan) */
+    transform: translateY(-4px); /* Ubah bentuk/putar elemen: translateY(-4px) */
+    box-shadow: 0 14px 30px rgba(166, 64, 89, 0.12); /* Bayangan 0 14px 30px rgba(166, 64, 89, 0.12) */
+    border-color: #ecd3d8; /* Warna garis tepi #ecd3d8 */
+} /* Akhir aturan study card (saat kursor diarahkan) */
+
+.study-card h3 { /* Gaya untuk judul h3 di dalam study card */
+    font-size: 14px; /* Ukuran huruf 14px */
+    margin: 23px 0 8px; /* Jarak luar elemen 23px 0 8px */
+} /* Akhir aturan judul h3 di dalam study card */
+
+.facilities-section { /* Gaya untuk facilities section */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    display: grid; /* Tipe tampilan: grid */
+    gap: 50px; /* Jarak antar elemen 50px */
+    grid-template-columns: 0.7fr 1.3fr; /* Susunan kolom grid 0.7fr 1.3fr */
+    padding-bottom: 40px; /* Jarak dalam bawah 40px */
+    padding-top: 40px; /* Jarak dalam atas 40px */
+} /* Akhir aturan facilities section */
+
+.facility-grid { /* Gaya untuk facility grid */
+    display: grid; /* Tipe tampilan: grid */
+    gap: 12px; /* Jarak antar elemen 12px */
+    grid-template-columns: repeat(4, 1fr); /* Susunan kolom grid repeat(4, 1fr) */
+} /* Akhir aturan facility grid */
+
+.facility-card h3 { /* Gaya untuk judul h3 di dalam facility card */
+    font-size: 11px; /* Ukuran huruf 11px */
+    margin-top: 8px; /* Jarak luar atas 8px */
+    text-align: center; /* Rata teks center */
+} /* Akhir aturan judul h3 di dalam facility card */
+
+.facility-card { /* Gaya untuk facility card */
+    overflow: hidden; /* Potong isi yang keluar dari kotak */
+    border-radius: 10px; /* Sudut melengkung 10px */
+} /* Akhir aturan facility card */
+
+.facility-photo { /* Gaya untuk facility photo */
+    border-radius: 10px; /* Sudut melengkung 10px */
+    height: 88px; /* Tinggi 88px */
+    transition: transform 0.35s ease; /* Perubahan halus (animasi) pada transform 0.35s ease */
+} /* Akhir aturan facility photo */
+
+.facility-card:hover .facility-photo { /* Gaya untuk facility photo di dalam facility card (saat kursor diarahkan) */
+    transform: scale(1.08); /* Ubah bentuk/putar elemen: scale(1.08) */
+} /* Akhir aturan facility photo di dalam facility card (saat kursor diarahkan) */
+
+.library-photo { background-image: url("https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=500&q=80"); } /* Gaya untuk library photo: Gambar latar dari internet (Unsplash) */
+.lab-photo { background-image: url("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80"); } /* Gaya untuk lab photo: Gambar latar dari internet (Unsplash) */
+.center-photo { background-image: url("https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=500&q=80"); } /* Gaya untuk center photo: Gambar latar dari internet (Unsplash) */
+.sport-photo { background-image: url("https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=500&q=80"); } /* Gaya untuk sport photo: Gambar latar dari internet (Unsplash) */
+
+.stats-section { /* Gaya untuk stats section */
+    background: var(--landing-red); /* Latar belakang var(--landing-red) */
+    color: #fff; /* Warna teks #fff */
+    display: grid; /* Tipe tampilan: grid */
+    grid-template-columns: repeat(4, 1fr); /* Susunan kolom grid repeat(4, 1fr) */
+    padding: 17px max(24px, calc((100% - 900px) / 2)); /* Jarak dalam elemen 17px max(24px, calc((100% - 900px) / 2)) */
+    text-align: center; /* Rata teks center */
+} /* Akhir aturan stats section */
+
+.stats-section div + div { /* Gaya untuk wadah div di dalam stats section */
+    border-left: 1px solid rgba(255, 255, 255, 0.25); /* Garis tepi kiri 1px solid rgba(255, 255, 255, 0.25) */
+} /* Akhir aturan wadah div di dalam stats section */
+
+.stats-section strong, /* Selektor teks tebal di dalam stats section, berbagi gaya dengan selektor berikutnya */
+.stats-section span { /* Gaya untuk teks span di dalam stats section */
+    display: block; /* Tampil sebagai blok */
+} /* Akhir aturan teks span di dalam stats section */
+
+.stats-section strong { /* Gaya untuk teks tebal di dalam stats section */
+    font-family: Georgia, serif; /* Jenis huruf Georgia, serif */
+    font-size: 22px; /* Ukuran huruf 22px */
+} /* Akhir aturan teks tebal di dalam stats section */
+
+.stats-section span { /* Gaya untuk teks span di dalam stats section */
+    font-size: 11px; /* Ukuran huruf 11px */
+    margin-top: 3px; /* Jarak luar atas 3px */
+    opacity: 0.85; /* Transparansi 0.85 */
+} /* Akhir aturan teks span di dalam stats section */
+
+.contact-section { /* Gaya untuk contact section */
+    background: linear-gradient(rgba(250, 238, 241, 0.9), rgba(250, 238, 241, 0.9)), url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1600&q=80") center / cover; /* Latar belakang linear-gradient(rgba(250, 238, 241, 0.9), rgba(250, 238, 241, 0.9)), url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1600&q=80") center / cover */
+    padding: 38px 24px 34px; /* Jarak dalam elemen 38px 24px 34px */
+    text-align: center; /* Rata teks center */
+} /* Akhir aturan contact section */
+
+.contact-section > p:not(.eyebrow) { /* Gaya untuk paragraf di dalam contact section */
+    color: var(--landing-muted); /* Warna teks var(--landing-muted) */
+    font-size: 12px; /* Ukuran huruf 12px */
+} /* Akhir aturan paragraf di dalam contact section */
+
+.contact-details { /* Gaya untuk contact details */
+    color: var(--landing-muted); /* Warna teks var(--landing-muted) */
+    display: flex; /* Susun isi dengan flexbox */
+    flex-wrap: wrap; /* Boleh turun ke baris baru jika sempit */
+    font-size: 11px; /* Ukuran huruf 11px */
+    gap: 20px; /* Jarak antar elemen 20px */
+    justify-content: center; /* Posisi isi searah baris: center */
+    margin: 22px auto 0; /* Jarak luar elemen 22px auto 0 */
+} /* Akhir aturan contact details */
+
+.landing-footer { /* Gaya untuk landing footer */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    background: #222427; /* Latar belakang #222427 */
+    color: #fff; /* Warna teks #fff */
+    display: flex; /* Susun isi dengan flexbox */
+    font-size: 11px; /* Ukuran huruf 11px */
+    justify-content: space-between; /* Posisi isi searah baris: space-between */
+    padding: 18px max(24px, calc((100% - 1200px) / 2)); /* Jarak dalam elemen 18px max(24px, calc((100% - 1200px) / 2)) */
+} /* Akhir aturan landing footer */
+
+.landing-footer span { /* Gaya untuk teks span di dalam landing footer */
+    color: #aaa; /* Warna teks #aaa */
+} /* Akhir aturan teks span di dalam landing footer */
+
+@media (max-width: 900px) { /* Aturan khusus layar selebar maks 900px (tablet/HP) */
+    .landing-header { /* Gaya untuk landing header */
+        flex-wrap: wrap; /* Boleh turun ke baris baru jika sempit */
+        gap: 0 18px; /* Jarak antar elemen 0 18px */
+        padding-bottom: 10px; /* Jarak dalam bawah 10px */
+        padding-top: 10px; /* Jarak dalam atas 10px */
+    } /* Akhir aturan landing header */
+
+    .landing-nav { /* Gaya untuk landing nav */
+        gap: 18px; /* Jarak antar elemen 18px */
+        height: 35px; /* Tinggi 35px */
+        order: 3; /* Urutan tampil 3 */
+        overflow-x: auto; /* Boleh digeser ke samping jika kepanjangan */
+        width: 100%; /* Lebar 100% */
+    } /* Akhir aturan landing nav */
+
+    .landing-nav a { /* Gaya untuk link di dalam landing nav */
+        white-space: nowrap; /* Teks tidak boleh turun baris */
+    } /* Akhir aturan link di dalam landing nav */
+
+    .landing-hero { /* Gaya untuk landing hero */
+        grid-template-columns: 1fr; /* Susunan kolom grid 1fr */
+    } /* Akhir aturan landing hero */
+
+    .hero-copy { /* Gaya untuk hero copy */
+        margin-left: 24px; /* Jarak luar kiri 24px */
+        padding-right: 24px; /* Jarak dalam kanan 24px */
+    } /* Akhir aturan hero copy */
+
+    .hero-visual { /* Gaya untuk hero visual */
+        min-height: 300px; /* Tinggi minimum 300px */
+    } /* Akhir aturan hero visual */
+
+    .about-section, /* Selektor about section, berbagi gaya dengan selektor berikutnya */
+    .facilities-section { /* Gaya untuk facilities section */
+        gap: 30px; /* Jarak antar elemen 30px */
+        grid-template-columns: 1fr; /* Susunan kolom grid 1fr */
+    } /* Akhir aturan facilities section */
+
+    .about-photo { /* Gaya untuk about photo */
+        min-height: 240px; /* Tinggi minimum 240px */
+    } /* Akhir aturan about photo */
+
+    .study-grid { /* Gaya untuk study grid */
+        grid-template-columns: repeat(2, 1fr); /* Susunan kolom grid repeat(2, 1fr) */
+    } /* Akhir aturan study grid */
+} /* Akhir aturan layar kecil */
+
+@media (max-width: 560px) { /* Aturan khusus layar selebar maks 560px (tablet/HP) */
+    .landing-header { /* Gaya untuk landing header */
+        align-items: flex-start; /* Posisi isi tegak lurus: flex-start */
+    } /* Akhir aturan landing header */
+
+    .header-login { /* Gaya untuk header login */
+        border-left: 0; /* Garis tepi kiri 0 */
+        padding-left: 0; /* Jarak dalam kiri 0 */
+    } /* Akhir aturan header login */
+
+    .landing-nav { /* Gaya untuk landing nav */
+        gap: 22px; /* Jarak antar elemen 22px */
+    } /* Akhir aturan landing nav */
+
+    .hero-copy h1 { /* Gaya untuk judul h1 di dalam hero copy */
+        font-size: 38px; /* Ukuran huruf 38px */
+    } /* Akhir aturan judul h1 di dalam hero copy */
+
+    .value-list, /* Selektor value list, berbagi gaya dengan selektor berikutnya */
+    .study-grid, /* Selektor study grid, berbagi gaya dengan selektor berikutnya */
+    .facility-grid { /* Gaya untuk facility grid */
+        grid-template-columns: 1fr; /* Susunan kolom grid 1fr */
+    } /* Akhir aturan facility grid */
+
+    .value-list { /* Gaya untuk value list */
+        gap: 15px; /* Jarak antar elemen 15px */
+    } /* Akhir aturan value list */
+
+    .study-card { /* Gaya untuk study card */
+        min-height: auto; /* Tinggi minimum auto */
+    } /* Akhir aturan study card */
+
+    .facility-photo { /* Gaya untuk facility photo */
+        height: 145px; /* Tinggi 145px */
+    } /* Akhir aturan facility photo */
+
+    .stats-section { /* Gaya untuk stats section */
+        gap: 18px 0; /* Jarak antar elemen 18px 0 */
+        grid-template-columns: repeat(2, 1fr); /* Susunan kolom grid repeat(2, 1fr) */
+    } /* Akhir aturan stats section */
+
+    .stats-section div:nth-child(3) { /* Gaya untuk wadah div di dalam stats section */
+        border-left: 0; /* Garis tepi kiri 0 */
+    } /* Akhir aturan wadah div di dalam stats section */
+
+    .landing-footer { /* Gaya untuk landing footer */
+        align-items: flex-start; /* Posisi isi tegak lurus: flex-start */
+        flex-direction: column; /* Susun isi ke bawah (kolom) */
+        gap: 8px; /* Jarak antar elemen 8px */
+    } /* Akhir aturan landing footer */
+} /* Akhir aturan layar kecil */
+
+
+/* ==================================================
+   LOGIN & REGISTER
+================================================== */
+
+.auth-page, /* Selektor auth page, berbagi gaya dengan selektor berikutnya */
+.register-page { /* Gaya untuk register page */
+    min-height: 100vh; /* Tinggi minimum 100vh */
+    position: relative; /* Posisi elemen: relative */
+    overflow: hidden; /* Potong isi yang keluar dari kotak */
+    background: linear-gradient(160deg, #fbe2e7 0%, #f7d5dd 55%, #f3c6d1 100%); /* Latar belakang linear-gradient(160deg, #fbe2e7 0%, #f7d5dd 55%, #f3c6d1 100%) */
+    display: flex; /* Susun isi dengan flexbox */
+    justify-content: center; /* Posisi isi searah baris: center */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    padding: 30px; /* Jarak dalam elemen 30px */
+} /* Akhir aturan register page */
+
+.auth-page::before, /* Selektor auth page (elemen tambahan sebelum isi), berbagi gaya dengan selektor berikutnya */
+.register-page::before, /* Selektor register page (elemen tambahan sebelum isi), berbagi gaya dengan selektor berikutnya */
+.auth-page::after, /* Selektor auth page (elemen tambahan setelah isi), berbagi gaya dengan selektor berikutnya */
+.register-page::after { /* Gaya untuk register page (elemen tambahan setelah isi) */
+    content: ""; /* Isi elemen tambahan: "" */
+    position: absolute; /* Posisi elemen: absolute */
+    border-radius: 50%; /* Sudut melengkung 50% */
+    background: rgba(255, 255, 255, 0.25); /* Latar belakang rgba(255, 255, 255, 0.25) */
+    pointer-events: none; /* Abaikan klik (tidak bisa diklik) */
+} /* Akhir aturan register page (elemen tambahan setelah isi) */
+
+.auth-page::before, /* Selektor auth page (elemen tambahan sebelum isi), berbagi gaya dengan selektor berikutnya */
+.register-page::before { /* Gaya untuk register page (elemen tambahan sebelum isi) */
+    width: 320px; /* Lebar 320px */
+    height: 320px; /* Tinggi 320px */
+    top: -120px; /* Jarak dari atas -120px */
+    left: -100px; /* Jarak dari kiri -100px */
+} /* Akhir aturan register page (elemen tambahan sebelum isi) */
+
+.auth-page::after, /* Selektor auth page (elemen tambahan setelah isi), berbagi gaya dengan selektor berikutnya */
+.register-page::after { /* Gaya untuk register page (elemen tambahan setelah isi) */
+    width: 260px; /* Lebar 260px */
+    height: 260px; /* Tinggi 260px */
+    bottom: -100px; /* Jarak dari bawah -100px */
+    right: -80px; /* Jarak dari kanan -80px */
+    background: rgba(139, 39, 64, 0.08); /* Latar belakang rgba(139, 39, 64, 0.08) */
+} /* Akhir aturan register page (elemen tambahan setelah isi) */
+
+.auth-box { /* Gaya untuk auth box */
+    position: relative; /* Posisi elemen: relative */
+    z-index: 1; /* Urutan tumpukan 1 (makin besar makin di atas) */
+    width: 420px; /* Lebar 420px */
+    background: var(--app-surface); /* Latar belakang var(--app-surface) */
+    padding: 44px 40px; /* Jarak dalam elemen 44px 40px */
+    border-radius: var(--app-radius-lg); /* Sudut melengkung var(--app-radius-lg) */
+    box-shadow: var(--app-shadow-lg); /* Bayangan var(--app-shadow-lg) */
+    text-align: center; /* Rata teks center */
+} /* Akhir aturan auth box */
+
+.auth-logo, /* Selektor auth logo, berbagi gaya dengan selektor berikutnya */
+.logo-icon { /* Gaya untuk ikon logo */
+    width: 65px; /* Lebar 65px */
+    height: 65px; /* Tinggi 65px */
+    background: linear-gradient(135deg, var(--app-primary-light), #f4aebd); /* Latar belakang linear-gradient(135deg, var(--app-primary-light), #f4aebd) */
+    border-radius: 18px; /* Sudut melengkung 18px */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    justify-content: center; /* Posisi isi searah baris: center */
+    font-size: 30px; /* Ukuran huruf 30px */
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5); /* Bayangan inset 0 0 0 1px rgba(255,255,255,0.5) */
+} /* Akhir aturan ikon logo */
+
+.auth-logo { /* Gaya untuk auth logo */
+    margin: 0 auto 15px; /* Jarak luar elemen 0 auto 15px */
+} /* Akhir aturan auth logo */
+
+.auth-box h1 { /* Gaya untuk judul h1 di dalam auth box */
+    font-size: 28px; /* Ukuran huruf 28px */
+    font-weight: 800; /* Ketebalan huruf 800 */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+    margin-bottom: 8px; /* Jarak luar bawah 8px */
+} /* Akhir aturan judul h1 di dalam auth box */
+
+.auth-subtitle { /* Gaya untuk auth subtitle */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+    margin-bottom: 30px; /* Jarak luar bawah 30px */
+} /* Akhir aturan auth subtitle */
+
+.form-group, /* Selektor form group, berbagi gaya dengan selektor berikutnya */
+.input-group { /* Gaya untuk kelompok input */
+    text-align: left; /* Rata teks left */
+    margin-bottom: 18px; /* Jarak luar bawah 18px */
+} /* Akhir aturan kelompok input */
+
+.form-group label, /* Selektor label di dalam form group, berbagi gaya dengan selektor berikutnya */
+.input-group label { /* Gaya untuk label di dalam kelompok input */
+    display: block; /* Tampil sebagai blok */
+    font-size: 14px; /* Ukuran huruf 14px */
+    font-weight: 600; /* Ketebalan huruf 600 */
+    margin-bottom: 8px; /* Jarak luar bawah 8px */
+    color: #55474c; /* Warna teks #55474c */
+} /* Akhir aturan label di dalam kelompok input */
+
+.form-group input, /* Selektor kolom input di dalam form group, berbagi gaya dengan selektor berikutnya */
+.form-group select, /* Selektor kotak pilihan di dalam form group, berbagi gaya dengan selektor berikutnya */
+.input-group input, /* Selektor kolom input di dalam kelompok input, berbagi gaya dengan selektor berikutnya */
+.input-group select { /* Gaya untuk kotak pilihan di dalam kelompok input */
+    width: 100%; /* Lebar 100% */
+    padding: 13px 15px; /* Jarak dalam elemen 13px 15px */
+    border: 1.5px solid var(--app-border); /* Garis tepi 1.5px solid var(--app-border) */
+    border-radius: var(--app-radius-sm); /* Sudut melengkung var(--app-radius-sm) */
+    outline: none; /* Hilangkan garis fokus bawaan browser */
+    background: #fdfbfc; /* Latar belakang #fdfbfc */
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s; /* Perubahan halus (animasi) pada border-color 0.2s, box-shadow 0.2s, backgro... */
+} /* Akhir aturan kotak pilihan di dalam kelompok input */
+
+.form-group input:focus, /* Selektor kolom input di dalam form group (saat dipilih/fokus), berbagi gaya dengan selektor berikutnya */
+.form-group select:focus, /* Selektor kotak pilihan di dalam form group (saat dipilih/fokus), berbagi gaya dengan selektor berikutnya */
+.input-group input:focus, /* Selektor kolom input di dalam kelompok input (saat dipilih/fokus), berbagi gaya dengan selektor berikutnya */
+.input-group select:focus { /* Gaya untuk kotak pilihan di dalam kelompok input (saat dipilih/fokus) */
+    border-color: var(--app-primary); /* Warna garis tepi var(--app-primary) */
+    background: #fff; /* Latar belakang #fff */
+    box-shadow: 0 0 0 4px rgba(178, 58, 85, 0.12); /* Bayangan 0 0 0 4px rgba(178, 58, 85, 0.12) */
+} /* Akhir aturan kotak pilihan di dalam kelompok input (saat dipilih/fokus) */
+
+.btn-primary, /* Selektor tombol utama, berbagi gaya dengan selektor berikutnya */
+.btn-login { /* Gaya untuk btn login */
+    display: block; /* Tampil sebagai blok */
+    width: 100%; /* Lebar 100% */
+    border: none; /* Tanpa garis tepi */
+    padding: 14px 20px; /* Jarak dalam elemen 14px 20px */
+    border-radius: var(--app-radius-sm); /* Sudut melengkung var(--app-radius-sm) */
+    background: linear-gradient(135deg, var(--app-primary), var(--app-primary-dark)); /* Latar belakang linear-gradient(135deg, var(--app-primary), var(--app-primary-dark)) */
+    color: white; /* Warna teks white */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    font-size: 14.5px; /* Ukuran huruf 14.5px */
+    text-align: center; /* Rata teks center */
+    cursor: pointer; /* Kursor berbentuk tangan (bisa diklik) */
+    box-shadow: 0 10px 22px rgba(139, 39, 64, 0.28); /* Bayangan 0 10px 22px rgba(139, 39, 64, 0.28) */
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s; /* Perubahan halus (animasi) pada transform 0.2s, box-shadow 0.2s, opacity 0.2s */
+} /* Akhir aturan btn login */
+
+.btn-primary:hover, /* Selektor tombol utama (saat kursor diarahkan), berbagi gaya dengan selektor berikutnya */
+.btn-login:hover { /* Gaya untuk btn login (saat kursor diarahkan) */
+    transform: translateY(-2px); /* Ubah bentuk/putar elemen: translateY(-2px) */
+    box-shadow: 0 14px 28px rgba(139, 39, 64, 0.34); /* Bayangan 0 14px 28px rgba(139, 39, 64, 0.34) */
+    opacity: 0.97; /* Transparansi 0.97 */
+} /* Akhir aturan btn login (saat kursor diarahkan) */
+
+.btn-primary:active, /* Selektor tombol utama (saat ditekan), berbagi gaya dengan selektor berikutnya */
+.btn-login:active { /* Gaya untuk btn login (saat ditekan) */
+    transform: translateY(0); /* Ubah bentuk/putar elemen: translateY(0) */
+} /* Akhir aturan btn login (saat ditekan) */
+
+.form-buttons { /* Gaya untuk tombol form */
+    display: flex; /* Susun isi dengan flexbox */
+    flex-direction: column; /* Susun isi ke bawah (kolom) */
+    gap: 10px; /* Jarak antar elemen 10px */
+    margin-top: 8px; /* Jarak luar atas 8px */
+} /* Akhir aturan tombol form */
+
+.btn-secondary { /* Gaya untuk tombol sekunder */
+    display: inline-block; /* Tipe tampilan: inline-block */
+    width: fit-content; /* Lebar fit-content */
+    align-self: flex-start; /* Posisi sendiri di sumbu silang: flex-start */
+    background: #f3eef0; /* Latar belakang #f3eef0 */
+    color: #6b5c61; /* Warna teks #6b5c61 */
+    border: 1px solid var(--app-border); /* Garis tepi 1px solid var(--app-border) */
+    padding: 10px 22px; /* Jarak dalam elemen 10px 22px */
+    border-radius: var(--app-radius-sm); /* Sudut melengkung var(--app-radius-sm) */
+    font-weight: 600; /* Ketebalan huruf 600 */
+    font-size: 13.5px; /* Ukuran huruf 13.5px */
+    cursor: pointer; /* Kursor berbentuk tangan (bisa diklik) */
+    text-align: center; /* Rata teks center */
+    transition: background 0.2s, transform 0.15s; /* Perubahan halus (animasi) pada background 0.2s, transform 0.15s */
+} /* Akhir aturan tombol sekunder */
+
+.btn-secondary:hover { /* Gaya untuk tombol sekunder (saat kursor diarahkan) */
+    background: #e9e1e4; /* Latar belakang #e9e1e4 */
+    transform: translateY(-1px); /* Ubah bentuk/putar elemen: translateY(-1px) */
+} /* Akhir aturan tombol sekunder (saat kursor diarahkan) */
+
+.auth-footer, /* Selektor auth footer, berbagi gaya dengan selektor berikutnya */
+.register-link { /* Gaya untuk register link */
+    margin-top: 20px; /* Jarak luar atas 20px */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+    font-size: 14px; /* Ukuran huruf 14px */
+} /* Akhir aturan register link */
+
+.auth-footer a, /* Selektor link di dalam auth footer, berbagi gaya dengan selektor berikutnya */
+.register-link a { /* Gaya untuk link di dalam register link */
+    color: var(--app-primary); /* Warna teks var(--app-primary) */
+    font-weight: 700; /* Ketebalan huruf 700 */
+} /* Akhir aturan link di dalam register link */
+
+
+/* ==================================================
+   REGISTER
+================================================== */
+
+.register-box { /* Gaya untuk register box */
+    position: relative; /* Posisi elemen: relative */
+    z-index: 1; /* Urutan tumpukan 1 (makin besar makin di atas) */
+    width: 850px; /* Lebar 850px */
+    background: var(--app-surface); /* Latar belakang var(--app-surface) */
+    padding: 44px; /* Jarak dalam elemen 44px */
+    border-radius: var(--app-radius-lg); /* Sudut melengkung var(--app-radius-lg) */
+    box-shadow: var(--app-shadow-lg); /* Bayangan var(--app-shadow-lg) */
+} /* Akhir aturan register box */
+
+.register-header { /* Gaya untuk register header */
+    text-align: center; /* Rata teks center */
+    margin-bottom: 30px; /* Jarak luar bawah 30px */
+} /* Akhir aturan register header */
+
+.register-header .logo-icon { /* Gaya untuk ikon logo di dalam register header */
+    margin: 0 auto 15px; /* Jarak luar elemen 0 auto 15px */
+} /* Akhir aturan ikon logo di dalam register header */
+
+.register-header h1 { /* Gaya untuk judul h1 di dalam register header */
+    font-size: 26px; /* Ukuran huruf 26px */
+    font-weight: 800; /* Ketebalan huruf 800 */
+    margin-bottom: 8px; /* Jarak luar bawah 8px */
+} /* Akhir aturan judul h1 di dalam register header */
+
+.register-header p { /* Gaya untuk paragraf di dalam register header */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+} /* Akhir aturan paragraf di dalam register header */
+
+.form-grid { /* Gaya untuk grid form */
+    display: grid; /* Tipe tampilan: grid */
+    grid-template-columns: 1fr 1fr; /* Susunan kolom grid 1fr 1fr */
+    gap: 5px 20px; /* Jarak antar elemen 5px 20px */
+} /* Akhir aturan grid form */
+
+
+/* ==================================================
+   DASHBOARD
+================================================== */
+
+.dashboard { /* Gaya untuk pembungkus layout dashboard */
+    min-height: 100vh; /* Tinggi minimum 100vh */
+    display: flex; /* Susun isi dengan flexbox */
+} /* Akhir aturan pembungkus layout dashboard */
+
+
+/* ==================================================
+   SIDEBAR
+================================================== */
+
+.sidebar { /* Gaya untuk menu samping */
+    width: 250px; /* Lebar 250px */
+    min-height: 100vh; /* Tinggi minimum 100vh */
+    background: var(--app-surface); /* Latar belakang var(--app-surface) */
+    border-right: 1px solid var(--app-border); /* Garis tepi kanan 1px solid var(--app-border) */
+    box-shadow: 4px 0 24px rgba(139, 39, 64, 0.04); /* Bayangan 4px 0 24px rgba(139, 39, 64, 0.04) */
+    padding: 25px 18px; /* Jarak dalam elemen 25px 18px */
+    display: flex; /* Susun isi dengan flexbox */
+    flex-direction: column; /* Susun isi ke bawah (kolom) */
+    position: fixed; /* Posisi elemen: fixed */
+    left: 0; /* Jarak dari kiri 0 */
+    top: 0; /* Jarak dari atas 0 */
+    bottom: 0; /* Jarak dari bawah 0 */
+    z-index: 5; /* Urutan tumpukan 5 (makin besar makin di atas) */
+} /* Akhir aturan menu samping */
+
+.sidebar-logo { /* Gaya untuk logo di sidebar */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    gap: 12px; /* Jarak antar elemen 12px */
+    padding: 0 8px 30px; /* Jarak dalam elemen 0 8px 30px */
+    margin-bottom: 10px; /* Jarak luar bawah 10px */
+    border-bottom: 1px solid var(--app-border); /* Garis tepi bawah 1px solid var(--app-border) */
+} /* Akhir aturan logo di sidebar */
+
+.sidebar-logo .logo-icon { /* Gaya untuk ikon logo di dalam logo di sidebar */
+    width: 48px; /* Lebar 48px */
+    height: 48px; /* Tinggi 48px */
+    font-size: 23px; /* Ukuran huruf 23px */
+    border-radius: 14px; /* Sudut melengkung 14px */
+    background: linear-gradient(135deg, var(--app-primary-light), #f4aebd); /* Latar belakang linear-gradient(135deg, var(--app-primary-light), #f4aebd) */
+    box-shadow: var(--app-shadow-sm); /* Bayangan var(--app-shadow-sm) */
+} /* Akhir aturan ikon logo di dalam logo di sidebar */
+
+.sidebar-logo h2 { /* Gaya untuk judul h2 di dalam logo di sidebar */
+    font-size: 18px; /* Ukuran huruf 18px */
+    font-weight: 800; /* Ketebalan huruf 800 */
+    margin-bottom: 3px; /* Jarak luar bawah 3px */
+    color: var(--app-primary-dark); /* Warna teks var(--app-primary-dark) */
+} /* Akhir aturan judul h2 di dalam logo di sidebar */
+
+.sidebar-logo span { /* Gaya untuk teks span di dalam logo di sidebar */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+    font-size: 12px; /* Ukuran huruf 12px */
+} /* Akhir aturan teks span di dalam logo di sidebar */
+
+
+/* ==================================================
+   SIDEBAR MENU
+================================================== */
+
+.sidebar-menu { /* Gaya untuk daftar menu navigasi */
+    display: flex; /* Susun isi dengan flexbox */
+    flex-direction: column; /* Susun isi ke bawah (kolom) */
+    gap: 7px; /* Jarak antar elemen 7px */
+} /* Akhir aturan daftar menu navigasi */
+
+.sidebar-menu a { /* Gaya untuk link di dalam daftar menu navigasi */
+    position: relative; /* Posisi elemen: relative */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    gap: 12px; /* Jarak antar elemen 12px */
+    padding: 13px 14px; /* Jarak dalam elemen 13px 14px */
+    border-radius: var(--app-radius-sm); /* Sudut melengkung var(--app-radius-sm) */
+    color: #6b6066; /* Warna teks #6b6066 */
+    font-size: 14px; /* Ukuran huruf 14px */
+    font-weight: 500; /* Ketebalan huruf 500 */
+    transition: background 0.2s, color 0.2s, transform 0.15s; /* Perubahan halus (animasi) pada background 0.2s, color 0.2s, transform 0.15s */
+} /* Akhir aturan link di dalam daftar menu navigasi */
+
+.sidebar-menu a:hover { /* Gaya untuk link di dalam daftar menu navigasi (saat kursor diarahkan) */
+    background: var(--app-accent-bg); /* Latar belakang var(--app-accent-bg) */
+    color: var(--app-primary); /* Warna teks var(--app-primary) */
+    transform: translateX(2px); /* Ubah bentuk/putar elemen: translateX(2px) */
+} /* Akhir aturan link di dalam daftar menu navigasi (saat kursor diarahkan) */
+
+.sidebar-menu a.active { /* Gaya untuk menu aktif di dalam daftar menu navigasi */
+    background: linear-gradient(135deg, var(--app-primary-light), #f3c2cd); /* Latar belakang linear-gradient(135deg, var(--app-primary-light), #f3c2cd) */
+    color: var(--app-primary-dark); /* Warna teks var(--app-primary-dark) */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    box-shadow: var(--app-shadow-sm); /* Bayangan var(--app-shadow-sm) */
+} /* Akhir aturan menu aktif di dalam daftar menu navigasi */
+
+.sidebar-menu a.active::before { /* Gaya untuk menu aktif di dalam daftar menu navigasi (elemen tambahan sebelum isi) */
+    content: ""; /* Isi elemen tambahan: "" */
+    position: absolute; /* Posisi elemen: absolute */
+    left: -18px; /* Jarak dari kiri -18px */
+    top: 50%; /* Jarak dari atas 50% */
+    transform: translateY(-50%); /* Ubah bentuk/putar elemen: translateY(-50%) */
+    width: 4px; /* Lebar 4px */
+    height: 22px; /* Tinggi 22px */
+    border-radius: 4px; /* Sudut melengkung 4px */
+    background: var(--app-primary); /* Latar belakang var(--app-primary) */
+} /* Akhir aturan menu aktif di dalam daftar menu navigasi (elemen tambahan sebelum isi) */
+
+.sidebar-bottom { /* Gaya untuk bagian bawah sidebar */
+    margin-top: auto; /* Jarak luar atas auto */
+    padding-top: 14px; /* Jarak dalam atas 14px */
+    border-top: 1px solid var(--app-border); /* Garis tepi atas 1px solid var(--app-border) */
+} /* Akhir aturan bagian bawah sidebar */
+
+.logout { /* Gaya untuk tombol logout */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    gap: 12px; /* Jarak antar elemen 12px */
+    padding: 13px 14px; /* Jarak dalam elemen 13px 14px */
+    color: #c6536a; /* Warna teks #c6536a */
+    border-radius: var(--app-radius-sm); /* Sudut melengkung var(--app-radius-sm) */
+    font-weight: 500; /* Ketebalan huruf 500 */
+    transition: background 0.2s, transform 0.15s; /* Perubahan halus (animasi) pada background 0.2s, transform 0.15s */
+} /* Akhir aturan tombol logout */
+
+.logout:hover { /* Gaya untuk tombol logout (saat kursor diarahkan) */
+    background: #fff0f2; /* Latar belakang #fff0f2 */
+    transform: translateX(2px); /* Ubah bentuk/putar elemen: translateX(2px) */
+} /* Akhir aturan tombol logout (saat kursor diarahkan) */
+
+
+/* ==================================================
+   MAIN CONTENT
+================================================== */
+
+.main-content { /* Gaya untuk konten utama halaman */
+    margin-left: 250px; /* Jarak luar kiri 250px */
+    width: calc(100% - 250px); /* Lebar calc(100% - 250px) */
+    padding: 30px 35px; /* Jarak dalam elemen 30px 35px */
+} /* Akhir aturan konten utama halaman */
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.dashboard-header { /* Gaya untuk header halaman */
+    display: flex; /* Susun isi dengan flexbox */
+    justify-content: space-between; /* Posisi isi searah baris: space-between */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    margin-bottom: 30px; /* Jarak luar bawah 30px */
+} /* Akhir aturan header halaman */
+
+.dashboard-header h1 { /* Gaya untuk judul h1 di dalam header halaman */
+    font-size: 28px; /* Ukuran huruf 28px */
+    font-weight: 800; /* Ketebalan huruf 800 */
+    margin-bottom: 7px; /* Jarak luar bawah 7px */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+} /* Akhir aturan judul h1 di dalam header halaman */
+
+.dashboard-header p { /* Gaya untuk paragraf di dalam header halaman */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+    font-size: 14px; /* Ukuran huruf 14px */
+} /* Akhir aturan paragraf di dalam header halaman */
+
+.user-info { /* Gaya untuk info user di header */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    gap: 10px; /* Jarak antar elemen 10px */
+    background: var(--app-surface); /* Latar belakang var(--app-surface) */
+    padding: 8px 16px 8px 8px; /* Jarak dalam elemen 8px 16px 8px 8px */
+    border-radius: 50px; /* Sudut melengkung 50px */
+    box-shadow: var(--app-shadow-sm); /* Bayangan var(--app-shadow-sm) */
+} /* Akhir aturan info user di header */
+
+.user-avatar { /* Gaya untuk avatar user */
+    width: 42px; /* Lebar 42px */
+    height: 42px; /* Tinggi 42px */
+    border-radius: 50%; /* Sudut melengkung 50% */
+    background: linear-gradient(135deg, var(--app-primary-light), #f4aebd); /* Latar belakang linear-gradient(135deg, var(--app-primary-light), #f4aebd) */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    justify-content: center; /* Posisi isi searah baris: center */
+} /* Akhir aturan avatar user */
+
+.user-info strong { /* Gaya untuk teks tebal di dalam info user di header */
+    display: block; /* Tampil sebagai blok */
+    font-size: 14px; /* Ukuran huruf 14px */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+} /* Akhir aturan teks tebal di dalam info user di header */
+
+.user-info span { /* Gaya untuk teks span di dalam info user di header */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+    font-size: 12px; /* Ukuran huruf 12px */
+} /* Akhir aturan teks span di dalam info user di header */
+
+
+/* ==================================================
+   WELCOME CARD
+================================================== */
+
+.welcome-card { /* Gaya untuk kartu sambutan */
+    position: relative; /* Posisi elemen: relative */
+    overflow: hidden; /* Potong isi yang keluar dari kotak */
+    background: linear-gradient( /* Latar belakang linear-gradient( */
+        120deg, /* Lanjutan nilai background */
+        #f5d5dc, /* Lanjutan nilai background */
+        #faeaee 65% /* Lanjutan nilai background */
+    ); /* Lanjutan nilai background */
+    border-radius: var(--app-radius-lg); /* Sudut melengkung var(--app-radius-lg) */
+    padding: 32px 34px; /* Jarak dalam elemen 32px 34px */
+    display: flex; /* Susun isi dengan flexbox */
+    justify-content: space-between; /* Posisi isi searah baris: space-between */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    margin-bottom: 25px; /* Jarak luar bawah 25px */
+    box-shadow: var(--app-shadow-md); /* Bayangan var(--app-shadow-md) */
+} /* Akhir aturan kartu sambutan */
+
+.welcome-card::after { /* Gaya untuk kartu sambutan (elemen tambahan setelah isi) */
+    content: ""; /* Isi elemen tambahan: "" */
+    position: absolute; /* Posisi elemen: absolute */
+    width: 180px; /* Lebar 180px */
+    height: 180px; /* Tinggi 180px */
+    border-radius: 50%; /* Sudut melengkung 50% */
+    background: rgba(255, 255, 255, 0.3); /* Latar belakang rgba(255, 255, 255, 0.3) */
+    top: -70px; /* Jarak dari atas -70px */
+    right: 60px; /* Jarak dari kanan 60px */
+    pointer-events: none; /* Abaikan klik (tidak bisa diklik) */
+} /* Akhir aturan kartu sambutan (elemen tambahan setelah isi) */
+
+.welcome-card h2 { /* Gaya untuk judul h2 di dalam kartu sambutan */
+    font-size: 23px; /* Ukuran huruf 23px */
+    font-weight: 800; /* Ketebalan huruf 800 */
+    margin-bottom: 8px; /* Jarak luar bawah 8px */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+} /* Akhir aturan judul h2 di dalam kartu sambutan */
+
+.welcome-card p { /* Gaya untuk paragraf di dalam kartu sambutan */
+    color: #8a6f76; /* Warna teks #8a6f76 */
+    font-size: 14px; /* Ukuran huruf 14px */
+} /* Akhir aturan paragraf di dalam kartu sambutan */
+
+.welcome-icon { /* Gaya untuk ikon sambutan */
+    position: relative; /* Posisi elemen: relative */
+    z-index: 1; /* Urutan tumpukan 1 (makin besar makin di atas) */
+    font-size: 55px; /* Ukuran huruf 55px */
+    filter: drop-shadow(0 6px 10px rgba(139, 39, 64, 0.2)); /* Efek visual drop-shadow(0 6px 10px rgba(139, 39, 64, 0.2)) */
+} /* Akhir aturan ikon sambutan */
+
+
+/* ==================================================
+   DASHBOARD CARDS
+================================================== */
+
+.dashboard-cards, /* Selektor deretan kartu status, berbagi gaya dengan selektor berikutnya */
+.stats-grid { /* Gaya untuk deretan statistik */
+    display: grid; /* Tipe tampilan: grid */
+    grid-template-columns: repeat(4, 1fr); /* Susunan kolom grid repeat(4, 1fr) */
+    gap: 18px; /* Jarak antar elemen 18px */
+    margin-bottom: 25px; /* Jarak luar bawah 25px */
+} /* Akhir aturan deretan statistik */
+
+.dashboard-card, /* Selektor kartu status, berbagi gaya dengan selektor berikutnya */
+.stat-card { /* Gaya untuk kartu statistik */
+    background: var(--app-surface); /* Latar belakang var(--app-surface) */
+    border-radius: var(--app-radius-md); /* Sudut melengkung var(--app-radius-md) */
+    padding: 20px; /* Jarak dalam elemen 20px */
+    border: 1px solid var(--app-border); /* Garis tepi 1px solid var(--app-border) */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    gap: 15px; /* Jarak antar elemen 15px */
+    box-shadow: var(--app-shadow-sm); /* Bayangan var(--app-shadow-sm) */
+    transition: transform 0.2s, box-shadow 0.2s; /* Perubahan halus (animasi) pada transform 0.2s, box-shadow 0.2s */
+} /* Akhir aturan kartu statistik */
+
+.dashboard-card:hover, /* Selektor kartu status (saat kursor diarahkan), berbagi gaya dengan selektor berikutnya */
+.stat-card:hover { /* Gaya untuk kartu statistik (saat kursor diarahkan) */
+    transform: translateY(-3px); /* Ubah bentuk/putar elemen: translateY(-3px) */
+    box-shadow: var(--app-shadow-md); /* Bayangan var(--app-shadow-md) */
+} /* Akhir aturan kartu statistik (saat kursor diarahkan) */
+
+.card-icon, /* Selektor ikon kartu, berbagi gaya dengan selektor berikutnya */
+.stat-icon { /* Gaya untuk ikon statistik */
+    width: 48px; /* Lebar 48px */
+    height: 48px; /* Tinggi 48px */
+    border-radius: 13px; /* Sudut melengkung 13px */
+    background: linear-gradient(135deg, var(--app-accent-bg), var(--app-primary-light)); /* Latar belakang linear-gradient(135deg, var(--app-accent-bg), var(--app-primary-light)) */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    justify-content: center; /* Posisi isi searah baris: center */
+    font-size: 22px; /* Ukuran huruf 22px */
+    flex-shrink: 0; /* Jangan mengecil saat ruang sempit */
+    box-shadow: var(--app-shadow-sm); /* Bayangan var(--app-shadow-sm) */
+} /* Akhir aturan ikon statistik */
+
+.dashboard-cards > *:nth-child(4n+1) .card-icon { /* Gaya untuk ikon kartu di dalam deretan kartu status */
+    background: linear-gradient(135deg, #fde3e9, #f4aebd); /* Latar belakang linear-gradient(135deg, #fde3e9, #f4aebd) */
+} /* Akhir aturan ikon kartu di dalam deretan kartu status */
+
+.dashboard-cards > *:nth-child(4n+2) .card-icon { /* Gaya untuk ikon kartu di dalam deretan kartu status */
+    background: linear-gradient(135deg, #e3ecfd, #aec4f4); /* Latar belakang linear-gradient(135deg, #e3ecfd, #aec4f4) */
+} /* Akhir aturan ikon kartu di dalam deretan kartu status */
+
+.dashboard-cards > *:nth-child(4n+3) .card-icon { /* Gaya untuk ikon kartu di dalam deretan kartu status */
+    background: linear-gradient(135deg, #e3fdf0, #aef4cf); /* Latar belakang linear-gradient(135deg, #e3fdf0, #aef4cf) */
+} /* Akhir aturan ikon kartu di dalam deretan kartu status */
+
+.dashboard-cards > *:nth-child(4n+4) .card-icon { /* Gaya untuk ikon kartu di dalam deretan kartu status */
+    background: linear-gradient(135deg, #fdf6e3, #f4e0ae); /* Latar belakang linear-gradient(135deg, #fdf6e3, #f4e0ae) */
+} /* Akhir aturan ikon kartu di dalam deretan kartu status */
+
+.dashboard-card span, /* Selektor teks span di dalam kartu status, berbagi gaya dengan selektor berikutnya */
+.stat-card span { /* Gaya untuk teks span di dalam kartu statistik */
+    display: block; /* Tampil sebagai blok */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+    font-size: 12px; /* Ukuran huruf 12px */
+    margin-bottom: 5px; /* Jarak luar bawah 5px */
+} /* Akhir aturan teks span di dalam kartu statistik */
+
+.dashboard-card h3, /* Selektor judul h3 di dalam kartu status, berbagi gaya dengan selektor berikutnya */
+.stat-card h2 { /* Gaya untuk judul h2 di dalam kartu statistik */
+    font-size: 20px; /* Ukuran huruf 20px */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+} /* Akhir aturan judul h2 di dalam kartu statistik */
+
+.stat-card small { /* Gaya untuk teks kecil di dalam kartu statistik */
+    color: #b3a8ac; /* Warna teks #b3a8ac */
+    font-size: 11px; /* Ukuran huruf 11px */
+} /* Akhir aturan teks kecil di dalam kartu statistik */
+
+
+/* ==================================================
+   CONTENT CARD
+================================================== */
+
+.content-card { /* Gaya untuk kartu konten */
+    position: relative; /* Posisi elemen: relative */
+    background: var(--app-surface); /* Latar belakang var(--app-surface) */
+    border: 1px solid var(--app-border); /* Garis tepi 1px solid var(--app-border) */
+    border-radius: var(--app-radius-md); /* Sudut melengkung var(--app-radius-md) */
+    padding: 26px; /* Jarak dalam elemen 26px */
+    margin-bottom: 25px; /* Jarak luar bawah 25px */
+    box-shadow: var(--app-shadow-sm); /* Bayangan var(--app-shadow-sm) */
+    overflow: hidden; /* Potong isi yang keluar dari kotak */
+} /* Akhir aturan kartu konten */
+
+.content-card::before { /* Gaya untuk kartu konten (elemen tambahan sebelum isi) */
+    content: ""; /* Isi elemen tambahan: "" */
+    position: absolute; /* Posisi elemen: absolute */
+    top: 0; /* Jarak dari atas 0 */
+    left: 0; /* Jarak dari kiri 0 */
+    right: 0; /* Jarak dari kanan 0 */
+    height: 4px; /* Tinggi 4px */
+    background: linear-gradient(90deg, var(--app-primary), #e8a4b4, var(--app-primary)); /* Latar belakang linear-gradient(90deg, var(--app-primary), #e8a4b4, var(--app-primary)) */
+} /* Akhir aturan kartu konten (elemen tambahan sebelum isi) */
+
+.section-title { /* Gaya untuk judul bagian */
+    display: flex; /* Susun isi dengan flexbox */
+    justify-content: space-between; /* Posisi isi searah baris: space-between */
+    margin-bottom: 20px; /* Jarak luar bawah 20px */
+    padding-bottom: 16px; /* Jarak dalam bawah 16px */
+    border-bottom: 1px solid var(--app-border); /* Garis tepi bawah 1px solid var(--app-border) */
+} /* Akhir aturan judul bagian */
+
+.section-title h2 { /* Gaya untuk judul h2 di dalam judul bagian */
+    font-size: 19px; /* Ukuran huruf 19px */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    margin-bottom: 5px; /* Jarak luar bawah 5px */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+} /* Akhir aturan judul h2 di dalam judul bagian */
+
+.section-title p { /* Gaya untuk paragraf di dalam judul bagian */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+    font-size: 13px; /* Ukuran huruf 13px */
+} /* Akhir aturan paragraf di dalam judul bagian */
+
+
+/* ==================================================
+   DATA GRID
+================================================== */
+
+.data-grid { /* Gaya untuk grid data */
+    display: grid; /* Tipe tampilan: grid */
+    grid-template-columns: 1fr 1fr; /* Susunan kolom grid 1fr 1fr */
+    gap: 15px; /* Jarak antar elemen 15px */
+} /* Akhir aturan grid data */
+
+.data-item { /* Gaya untuk satu item data */
+    background: #faf6f7; /* Latar belakang #faf6f7 */
+    padding: 16px 18px; /* Jarak dalam elemen 16px 18px */
+    border-radius: var(--app-radius-sm); /* Sudut melengkung var(--app-radius-sm) */
+    border: 1px solid var(--app-border); /* Garis tepi 1px solid var(--app-border) */
+    transition: background 0.2s, border-color 0.2s; /* Perubahan halus (animasi) pada background 0.2s, border-color 0.2s */
+} /* Akhir aturan satu item data */
+
+.data-item:hover { /* Gaya untuk satu item data (saat kursor diarahkan) */
+    background: var(--app-accent-bg); /* Latar belakang var(--app-accent-bg) */
+    border-color: #f1d2da; /* Warna garis tepi #f1d2da */
+} /* Akhir aturan satu item data (saat kursor diarahkan) */
+
+.data-item span { /* Gaya untuk teks span di dalam satu item data */
+    display: block; /* Tampil sebagai blok */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+    font-size: 11.5px; /* Ukuran huruf 11.5px */
+    text-transform: uppercase; /* Ubah teks jadi huruf kapital */
+    letter-spacing: .4px; /* Jarak antar huruf .4px */
+    margin-bottom: 6px; /* Jarak luar bawah 6px */
+} /* Akhir aturan teks span di dalam satu item data */
+
+.data-item strong { /* Gaya untuk teks tebal di dalam satu item data */
+    font-size: 14.5px; /* Ukuran huruf 14.5px */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+} /* Akhir aturan teks tebal di dalam satu item data */
+
+
+/* ==================================================
+   QUICK MENU
+================================================== */
+
+.quick-menu { /* Gaya untuk menu cepat */
+    display: grid; /* Tipe tampilan: grid */
+    grid-template-columns: 1fr 1fr; /* Susunan kolom grid 1fr 1fr */
+    gap: 15px; /* Jarak antar elemen 15px */
+} /* Akhir aturan menu cepat */
+
+.quick-menu a { /* Gaya untuk link di dalam menu cepat */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    gap: 15px; /* Jarak antar elemen 15px */
+    padding: 18px; /* Jarak dalam elemen 18px */
+    border: 1px solid var(--app-border); /* Garis tepi 1px solid var(--app-border) */
+    border-radius: var(--app-radius-md); /* Sudut melengkung var(--app-radius-md) */
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s; /* Perubahan halus (animasi) pada transform 0.2s, border-color 0.2s, box-shad... */
+} /* Akhir aturan link di dalam menu cepat */
+
+.quick-menu a:hover { /* Gaya untuk link di dalam menu cepat (saat kursor diarahkan) */
+    border-color: #f1c6d0; /* Warna garis tepi #f1c6d0 */
+    background: #fff9fa; /* Latar belakang #fff9fa */
+    transform: translateY(-3px); /* Ubah bentuk/putar elemen: translateY(-3px) */
+    box-shadow: var(--app-shadow-md); /* Bayangan var(--app-shadow-md) */
+} /* Akhir aturan link di dalam menu cepat (saat kursor diarahkan) */
+
+.quick-icon { /* Gaya untuk ikon menu cepat */
+    width: 45px; /* Lebar 45px */
+    height: 45px; /* Tinggi 45px */
+    border-radius: 12px; /* Sudut melengkung 12px */
+    background: linear-gradient(135deg, var(--app-accent-bg), var(--app-primary-light)); /* Latar belakang linear-gradient(135deg, var(--app-accent-bg), var(--app-primary-light)) */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    justify-content: center; /* Posisi isi searah baris: center */
+    font-size: 20px; /* Ukuran huruf 20px */
+    flex-shrink: 0; /* Jangan mengecil saat ruang sempit */
+} /* Akhir aturan ikon menu cepat */
+
+.quick-menu strong { /* Gaya untuk teks tebal di dalam menu cepat */
+    display: block; /* Tampil sebagai blok */
+    font-size: 14px; /* Ukuran huruf 14px */
+    margin-bottom: 4px; /* Jarak luar bawah 4px */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+} /* Akhir aturan teks tebal di dalam menu cepat */
+
+.quick-menu span { /* Gaya untuk teks span di dalam menu cepat */
+    display: block; /* Tampil sebagai blok */
+    font-size: 12px; /* Ukuran huruf 12px */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+} /* Akhir aturan teks span di dalam menu cepat */
+
+
+/* ==================================================
+   TABLE
+================================================== */
+
+.table-container { /* Gaya untuk pembungkus tabel */
+    width: 100%; /* Lebar 100% */
+    overflow-x: auto; /* Boleh digeser ke samping jika kepanjangan */
+    border-radius: var(--app-radius-sm); /* Sudut melengkung var(--app-radius-sm) */
+} /* Akhir aturan pembungkus tabel */
+
+table { /* Gaya untuk tabel */
+    width: 100%; /* Lebar 100% */
+    border-collapse: collapse; /* Garis tepi tabel digabung (tidak ganda) */
+    min-width: 750px; /* Lebar minimum 750px */
+} /* Akhir aturan tabel */
+
+thead { /* Gaya untuk kepala tabel */
+    background: linear-gradient(135deg, var(--app-accent-bg), #f9e4ea); /* Latar belakang linear-gradient(135deg, var(--app-accent-bg), #f9e4ea) */
+} /* Akhir aturan kepala tabel */
+
+th { /* Gaya untuk judul kolom tabel */
+    text-align: left; /* Rata teks left */
+    padding: 15px 14px; /* Jarak dalam elemen 15px 14px */
+    font-size: 11.5px; /* Ukuran huruf 11.5px */
+    color: var(--app-primary-dark); /* Warna teks var(--app-primary-dark) */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    text-transform: uppercase; /* Ubah teks jadi huruf kapital */
+    letter-spacing: .5px; /* Jarak antar huruf .5px */
+} /* Akhir aturan judul kolom tabel */
+
+th:first-child { /* Gaya untuk judul kolom tabel (item pertama) */
+    border-top-left-radius: var(--app-radius-sm); /* Sudut kiri atas melengkung var(--app-radius-sm) */
+} /* Akhir aturan judul kolom tabel (item pertama) */
+
+th:last-child { /* Gaya untuk judul kolom tabel (item terakhir) */
+    border-top-right-radius: var(--app-radius-sm); /* Sudut kanan atas melengkung var(--app-radius-sm) */
+} /* Akhir aturan judul kolom tabel (item terakhir) */
+
+td { /* Gaya untuk sel tabel */
+    padding: 14px; /* Jarak dalam elemen 14px */
+    border-bottom: 1px solid var(--app-border); /* Garis tepi bawah 1px solid var(--app-border) */
+    font-size: 13px; /* Ukuran huruf 13px */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+} /* Akhir aturan sel tabel */
+
+tbody tr { /* Gaya untuk baris tabel di dalam isi tabel */
+    transition: background 0.15s; /* Perubahan halus (animasi) pada background 0.15s */
+} /* Akhir aturan baris tabel di dalam isi tabel */
+
+tbody tr:nth-child(even) { /* Gaya untuk baris tabel di dalam isi tabel */
+    background: #fdfafb; /* Latar belakang #fdfafb */
+} /* Akhir aturan baris tabel di dalam isi tabel */
+
+tbody tr:hover { /* Gaya untuk baris tabel di dalam isi tabel (saat kursor diarahkan) */
+    background: #fcf0f3 !important; /* Latar belakang #fcf0f3 !important */
+} /* Akhir aturan baris tabel di dalam isi tabel (saat kursor diarahkan) */
+
+
+/* ==================================================
+   BADGE
+================================================== */
+
+.badge { /* Gaya untuk label status */
+    display: inline-block; /* Tipe tampilan: inline-block */
+    padding: 6px 13px; /* Jarak dalam elemen 6px 13px */
+    border-radius: 20px; /* Sudut melengkung 20px */
+    background: #eee; /* Latar belakang #eee */
+    color: #666; /* Warna teks #666 */
+    font-size: 11px; /* Ukuran huruf 11px */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    letter-spacing: .3px; /* Jarak antar huruf .3px */
+} /* Akhir aturan label status */
+
+.badge.success { /* Gaya untuk sukses */
+    background: #e2f6e9; /* Latar belakang #e2f6e9 */
+    color: #2e8349; /* Warna teks #2e8349 */
+    box-shadow: inset 0 0 0 1px rgba(46, 131, 73, 0.12); /* Bayangan inset 0 0 0 1px rgba(46, 131, 73, 0.12) */
+} /* Akhir aturan sukses */
+
+.badge.danger { /* Gaya untuk gagal */
+    background: #fde7e7; /* Latar belakang #fde7e7 */
+    color: #c0433f; /* Warna teks #c0433f */
+    box-shadow: inset 0 0 0 1px rgba(192, 67, 63, 0.12); /* Bayangan inset 0 0 0 1px rgba(192, 67, 63, 0.12) */
+} /* Akhir aturan gagal */
+
+.badge.warning { /* Gaya untuk peringatan */
+    background: #fff2d8; /* Latar belakang #fff2d8 */
+    color: #a3690f; /* Warna teks #a3690f */
+    box-shadow: inset 0 0 0 1px rgba(163, 105, 15, 0.12); /* Bayangan inset 0 0 0 1px rgba(163, 105, 15, 0.12) */
+} /* Akhir aturan peringatan */
+
+
+/* ==================================================
+   BUTTON
+================================================== */
+
+.btn-edit, /* Selektor tombol sekunder, berbagi gaya dengan selektor berikutnya */
+.btn-delete { /* Gaya untuk tombol hapus */
+    display: inline-block; /* Tipe tampilan: inline-block */
+    border: none; /* Tanpa garis tepi */
+    padding: 8px 14px; /* Jarak dalam elemen 8px 14px */
+    border-radius: 8px; /* Sudut melengkung 8px */
+    cursor: pointer; /* Kursor berbentuk tangan (bisa diklik) */
+    font-size: 12px; /* Ukuran huruf 12px */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s; /* Perubahan halus (animasi) pada transform 0.15s, box-shadow 0.15s, opacity ... */
+} /* Akhir aturan tombol hapus */
+
+.btn-edit:hover, /* Selektor tombol sekunder (saat kursor diarahkan), berbagi gaya dengan selektor berikutnya */
+.btn-delete:hover { /* Gaya untuk tombol hapus (saat kursor diarahkan) */
+    transform: translateY(-1px); /* Ubah bentuk/putar elemen: translateY(-1px) */
+    opacity: 0.9; /* Transparansi 0.9 */
+} /* Akhir aturan tombol hapus (saat kursor diarahkan) */
+
+.btn-edit { /* Gaya untuk tombol sekunder */
+    background: #e2f6e9; /* Latar belakang #e2f6e9 */
+    color: #2e8349; /* Warna teks #2e8349 */
+    box-shadow: 0 2px 6px rgba(46, 131, 73, 0.12); /* Bayangan 0 2px 6px rgba(46, 131, 73, 0.12) */
+} /* Akhir aturan tombol sekunder */
+
+.btn-delete { /* Gaya untuk tombol hapus */
+    background: #fde7e7; /* Latar belakang #fde7e7 */
+    color: #c0433f; /* Warna teks #c0433f */
+    box-shadow: 0 2px 6px rgba(192, 67, 63, 0.12); /* Bayangan 0 2px 6px rgba(192, 67, 63, 0.12) */
+} /* Akhir aturan tombol hapus */
+
+
+/* ==================================================
+   INFO BOX
+================================================== */
+
+.info-box { /* Gaya untuk kotak informasi */
+    background: #fff8fa; /* Latar belakang #fff8fa */
+    border: 1px solid #f3d9df; /* Garis tepi 1px solid #f3d9df */
+    border-left: 4px solid var(--app-primary); /* Garis tepi kiri 4px solid var(--app-primary) */
+    border-radius: var(--app-radius-sm); /* Sudut melengkung var(--app-radius-sm) */
+    padding: 18px 20px; /* Jarak dalam elemen 18px 20px */
+    color: #6b5c61; /* Warna teks #6b5c61 */
+    line-height: 1.6; /* Tinggi baris 1.6 */
+} /* Akhir aturan kotak informasi */
+
+.info-box h3 { /* Gaya untuk judul h3 di dalam kotak informasi */
+    margin-bottom: 8px; /* Jarak luar bawah 8px */
+    color: var(--app-primary-dark); /* Warna teks var(--app-primary-dark) */
+    font-weight: 700; /* Ketebalan huruf 700 */
+} /* Akhir aturan judul h3 di dalam kotak informasi */
+
+
+/* ==================================================
+   TEST NUMBER
+================================================== */
+
+.test-number-card { /* Gaya untuk kartu nomor test */
+    position: relative; /* Posisi elemen: relative */
+    overflow: hidden; /* Potong isi yang keluar dari kotak */
+    background: linear-gradient( /* Latar belakang linear-gradient( */
+        135deg, /* Lanjutan nilai background */
+        #f4d1d9, /* Lanjutan nilai background */
+        #fae9ed /* Lanjutan nilai background */
+    ); /* Lanjutan nilai background */
+    border-radius: var(--app-radius-lg); /* Sudut melengkung var(--app-radius-lg) */
+    padding: 44px 40px; /* Jarak dalam elemen 44px 40px */
+    text-align: center; /* Rata teks center */
+    margin-bottom: 25px; /* Jarak luar bawah 25px */
+    box-shadow: var(--app-shadow-md); /* Bayangan var(--app-shadow-md) */
+} /* Akhir aturan kartu nomor test */
+
+.test-number-card::before { /* Gaya untuk kartu nomor test (elemen tambahan sebelum isi) */
+    content: ""; /* Isi elemen tambahan: "" */
+    position: absolute; /* Posisi elemen: absolute */
+    width: 220px; /* Lebar 220px */
+    height: 220px; /* Tinggi 220px */
+    border-radius: 50%; /* Sudut melengkung 50% */
+    background: rgba(255, 255, 255, 0.22); /* Latar belakang rgba(255, 255, 255, 0.22) */
+    top: -110px; /* Jarak dari atas -110px */
+    right: -60px; /* Jarak dari kanan -60px */
+} /* Akhir aturan kartu nomor test (elemen tambahan sebelum isi) */
+
+.test-icon { /* Gaya untuk ikon nomor test */
+    position: relative; /* Posisi elemen: relative */
+    z-index: 1; /* Urutan tumpukan 1 (makin besar makin di atas) */
+    font-size: 42px; /* Ukuran huruf 42px */
+    margin-bottom: 10px; /* Jarak luar bawah 10px */
+    filter: drop-shadow(0 6px 10px rgba(139, 39, 64, 0.18)); /* Efek visual drop-shadow(0 6px 10px rgba(139, 39, 64, 0.... */
+} /* Akhir aturan ikon nomor test */
+
+.test-label, /* Selektor label nomor test, berbagi gaya dengan selektor berikutnya */
+.result-label, /* Selektor label hasil, berbagi gaya dengan selektor berikutnya */
+.nim-label { /* Gaya untuk label NIM */
+    position: relative; /* Posisi elemen: relative */
+    z-index: 1; /* Urutan tumpukan 1 (makin besar makin di atas) */
+    font-size: 12px; /* Ukuran huruf 12px */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    letter-spacing: 1.5px; /* Jarak antar huruf 1.5px */
+    color: #a9828c; /* Warna teks #a9828c */
+} /* Akhir aturan label NIM */
+
+.test-number-card h2 { /* Gaya untuk judul h2 di dalam kartu nomor test */
+    position: relative; /* Posisi elemen: relative */
+    z-index: 1; /* Urutan tumpukan 1 (makin besar makin di atas) */
+    font-size: 38px; /* Ukuran huruf 38px */
+    font-weight: 800; /* Ketebalan huruf 800 */
+    color: var(--app-primary-dark); /* Warna teks var(--app-primary-dark) */
+    margin: 15px 0; /* Jarak luar elemen 15px 0 */
+    letter-spacing: 1px; /* Jarak antar huruf 1px */
+} /* Akhir aturan judul h2 di dalam kartu nomor test */
+
+.test-info, /* Selektor info nomor test, berbagi gaya dengan selektor berikutnya */
+.nim-info { /* Gaya untuk info NIM */
+    position: relative; /* Posisi elemen: relative */
+    z-index: 1; /* Urutan tumpukan 1 (makin besar makin di atas) */
+    color: #8a6f76; /* Warna teks #8a6f76 */
+    font-size: 13px; /* Ukuran huruf 13px */
+} /* Akhir aturan info NIM */
+
+
+/* ==================================================
+   RESULT CARD
+================================================== */
+
+.result-card { /* Gaya untuk kartu hasil */
+    background: var(--app-surface); /* Latar belakang var(--app-surface) */
+    border: 1px solid var(--app-border); /* Garis tepi 1px solid var(--app-border) */
+    border-radius: var(--app-radius-lg); /* Sudut melengkung var(--app-radius-lg) */
+    padding: 38px; /* Jarak dalam elemen 38px */
+    text-align: center; /* Rata teks center */
+    margin-bottom: 25px; /* Jarak luar bawah 25px */
+    box-shadow: var(--app-shadow-md); /* Bayangan var(--app-shadow-md) */
+} /* Akhir aturan kartu hasil */
+
+.result-icon { /* Gaya untuk ikon hasil */
+    font-size: 48px; /* Ukuran huruf 48px */
+    margin-bottom: 12px; /* Jarak luar bawah 12px */
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.1)); /* Efek visual drop-shadow(0 6px 10px rgba(0,0,0,0.1)) */
+} /* Akhir aturan ikon hasil */
+
+.result-card h2 { /* Gaya untuk judul h2 di dalam kartu hasil */
+    font-size: 33px; /* Ukuran huruf 33px */
+    font-weight: 800; /* Ketebalan huruf 800 */
+    margin: 12px 0; /* Jarak luar elemen 12px 0 */
+    letter-spacing: 1px; /* Jarak antar huruf 1px */
+} /* Akhir aturan judul h2 di dalam kartu hasil */
+
+.result-success { /* Gaya untuk teks hasil sukses */
+    color: #2e8349; /* Warna teks #2e8349 */
+} /* Akhir aturan teks hasil sukses */
+
+.result-danger { /* Gaya untuk teks hasil gagal */
+    color: #c0433f; /* Warna teks #c0433f */
+} /* Akhir aturan teks hasil gagal */
+
+.result-pending { /* Gaya untuk teks hasil menunggu */
+    color: #a3690f; /* Warna teks #a3690f */
+} /* Akhir aturan teks hasil menunggu */
+
+.result-card p { /* Gaya untuk paragraf di dalam kartu hasil */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+    font-size: 14px; /* Ukuran huruf 14px */
+} /* Akhir aturan paragraf di dalam kartu hasil */
+
+
+/* ==================================================
+   NIM CARD
+================================================== */
+
+.nim-card { /* Gaya untuk kartu NIM */
+    position: relative; /* Posisi elemen: relative */
+    overflow: hidden; /* Potong isi yang keluar dari kotak */
+    background: linear-gradient( /* Latar belakang linear-gradient( */
+        135deg, /* Lanjutan nilai background */
+        #f4d1d9, /* Lanjutan nilai background */
+        #fae9ed /* Lanjutan nilai background */
+    ); /* Lanjutan nilai background */
+    border-radius: var(--app-radius-lg); /* Sudut melengkung var(--app-radius-lg) */
+    padding: 48px; /* Jarak dalam elemen 48px */
+    text-align: center; /* Rata teks center */
+    margin-bottom: 25px; /* Jarak luar bawah 25px */
+    box-shadow: var(--app-shadow-md); /* Bayangan var(--app-shadow-md) */
+} /* Akhir aturan kartu NIM */
+
+.nim-card::before { /* Gaya untuk kartu NIM (elemen tambahan sebelum isi) */
+    content: ""; /* Isi elemen tambahan: "" */
+    position: absolute; /* Posisi elemen: absolute */
+    width: 240px; /* Lebar 240px */
+    height: 240px; /* Tinggi 240px */
+    border-radius: 50%; /* Sudut melengkung 50% */
+    background: rgba(255, 255, 255, 0.22); /* Latar belakang rgba(255, 255, 255, 0.22) */
+    bottom: -130px; /* Jarak dari bawah -130px */
+    left: -70px; /* Jarak dari kiri -70px */
+} /* Akhir aturan kartu NIM (elemen tambahan sebelum isi) */
+
+.nim-icon { /* Gaya untuk ikon NIM */
+    position: relative; /* Posisi elemen: relative */
+    z-index: 1; /* Urutan tumpukan 1 (makin besar makin di atas) */
+    font-size: 52px; /* Ukuran huruf 52px */
+    filter: drop-shadow(0 6px 10px rgba(139, 39, 64, 0.18)); /* Efek visual drop-shadow(0 6px 10px rgba(139, 39, 64, 0.... */
+} /* Akhir aturan ikon NIM */
+
+.nim-card h2 { /* Gaya untuk judul h2 di dalam kartu NIM */
+    position: relative; /* Posisi elemen: relative */
+    z-index: 1; /* Urutan tumpukan 1 (makin besar makin di atas) */
+    font-size: 40px; /* Ukuran huruf 40px */
+    font-weight: 800; /* Ketebalan huruf 800 */
+    color: var(--app-primary-dark); /* Warna teks var(--app-primary-dark) */
+    letter-spacing: 2px; /* Jarak antar huruf 2px */
+    margin: 15px 0; /* Jarak luar elemen 15px 0 */
+} /* Akhir aturan judul h2 di dalam kartu NIM */
+
+
+/* ==================================================
+   QUESTION CARD
+================================================== */
+
+.question-card { /* Gaya untuk kartu soal */
+    background: var(--app-surface); /* Latar belakang var(--app-surface) */
+    border: 1px solid var(--app-border); /* Garis tepi 1px solid var(--app-border) */
+    border-radius: var(--app-radius-md); /* Sudut melengkung var(--app-radius-md) */
+    padding: 26px; /* Jarak dalam elemen 26px */
+    margin-bottom: 18px; /* Jarak luar bawah 18px */
+    box-shadow: var(--app-shadow-sm); /* Bayangan var(--app-shadow-sm) */
+    transition: box-shadow 0.2s; /* Perubahan halus (animasi) pada box-shadow 0.2s */
+} /* Akhir aturan kartu soal */
+
+.question-card:hover { /* Gaya untuk kartu soal (saat kursor diarahkan) */
+    box-shadow: var(--app-shadow-md); /* Bayangan var(--app-shadow-md) */
+} /* Akhir aturan kartu soal (saat kursor diarahkan) */
+
+.question-header { /* Gaya untuk header soal */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: flex-start; /* Posisi isi tegak lurus: flex-start */
+    gap: 12px; /* Jarak antar elemen 12px */
+    margin-bottom: 20px; /* Jarak luar bawah 20px */
+} /* Akhir aturan header soal */
+
+.question-number { /* Gaya untuk nomor soal */
+    min-width: 35px; /* Lebar minimum 35px */
+    height: 35px; /* Tinggi 35px */
+    background: linear-gradient(135deg, var(--app-primary-light), #f3c2cd); /* Latar belakang linear-gradient(135deg, var(--app-primary-light), #f3c2cd) */
+    color: var(--app-primary-dark); /* Warna teks var(--app-primary-dark) */
+    border-radius: 10px; /* Sudut melengkung 10px */
+    display: flex; /* Susun isi dengan flexbox */
+    justify-content: center; /* Posisi isi searah baris: center */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    font-weight: 800; /* Ketebalan huruf 800 */
+    box-shadow: var(--app-shadow-sm); /* Bayangan var(--app-shadow-sm) */
+} /* Akhir aturan nomor soal */
+
+.question-header h3 { /* Gaya untuk judul h3 di dalam header soal */
+    font-size: 15px; /* Ukuran huruf 15px */
+    font-weight: 600; /* Ketebalan huruf 600 */
+    line-height: 1.5; /* Tinggi baris 1.5 */
+    padding-top: 7px; /* Jarak dalam atas 7px */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+} /* Akhir aturan judul h3 di dalam header soal */
+
+.answer-option { /* Gaya untuk pilihan jawaban */
+    display: flex; /* Susun isi dengan flexbox */
+    align-items: center; /* Posisi isi tegak lurus: center */
+    gap: 12px; /* Jarak antar elemen 12px */
+    padding: 13px 16px; /* Jarak dalam elemen 13px 16px */
+    border: 1.5px solid var(--app-border); /* Garis tepi 1.5px solid var(--app-border) */
+    border-radius: var(--app-radius-sm); /* Sudut melengkung var(--app-radius-sm) */
+    margin-top: 10px; /* Jarak luar atas 10px */
+    cursor: pointer; /* Kursor berbentuk tangan (bisa diklik) */
+    font-size: 14px; /* Ukuran huruf 14px */
+    transition: 0.2s; /* Perubahan halus (animasi) pada 0.2s */
+} /* Akhir aturan pilihan jawaban */
+
+.answer-option:hover { /* Gaya untuk pilihan jawaban (saat kursor diarahkan) */
+    background: #fff7f9; /* Latar belakang #fff7f9 */
+    border-color: #e8a4b4; /* Warna garis tepi #e8a4b4 */
+    transform: translateX(2px); /* Ubah bentuk/putar elemen: translateX(2px) */
+} /* Akhir aturan pilihan jawaban (saat kursor diarahkan) */
+
+.answer-option input { /* Gaya untuk kolom input di dalam pilihan jawaban */
+    accent-color: var(--app-primary); /* Warna aksen kontrol bawaan (checkbox/radio) var(--app-primary) */
+    width: 16px; /* Lebar 16px */
+    height: 16px; /* Tinggi 16px */
+} /* Akhir aturan kolom input di dalam pilihan jawaban */
+
+.test-submit { /* Gaya untuk bagian kirim test */
+    text-align: center; /* Rata teks center */
+} /* Akhir aturan bagian kirim test */
+
+
+/* ==================================================
+   EMPTY CARD
+================================================== */
+
+.empty-card { /* Gaya untuk kartu kosong */
+    background: var(--app-surface); /* Latar belakang var(--app-surface) */
+    border: 1px dashed #e8c9d1; /* Garis tepi 1px dashed #e8c9d1 */
+    border-radius: var(--app-radius-lg); /* Sudut melengkung var(--app-radius-lg) */
+    padding: 60px 30px; /* Jarak dalam elemen 60px 30px */
+    text-align: center; /* Rata teks center */
+} /* Akhir aturan kartu kosong */
+
+.empty-icon { /* Gaya untuk ikon kartu kosong */
+    font-size: 56px; /* Ukuran huruf 56px */
+    margin-bottom: 15px; /* Jarak luar bawah 15px */
+    opacity: 0.85; /* Transparansi 0.85 */
+} /* Akhir aturan ikon kartu kosong */
+
+.empty-card h2 { /* Gaya untuk judul h2 di dalam kartu kosong */
+    margin-bottom: 10px; /* Jarak luar bawah 10px */
+    font-weight: 700; /* Ketebalan huruf 700 */
+    color: var(--app-text); /* Warna teks var(--app-text) */
+} /* Akhir aturan judul h2 di dalam kartu kosong */
+
+.empty-card p { /* Gaya untuk paragraf di dalam kartu kosong */
+    color: var(--app-muted); /* Warna teks var(--app-muted) */
+    font-size: 14px; /* Ukuran huruf 14px */
+    margin-bottom: 8px; /* Jarak luar bawah 8px */
+} /* Akhir aturan paragraf di dalam kartu kosong */
+
+.empty-card .btn-primary { /* Gaya untuk tombol utama di dalam kartu kosong */
+    display: inline-block; /* Tipe tampilan: inline-block */
+    width: auto; /* Lebar auto */
+    margin-top: 20px; /* Jarak luar atas 20px */
+    padding-left: 28px; /* Jarak dalam kiri 28px */
+    padding-right: 28px; /* Jarak dalam kanan 28px */
+} /* Akhir aturan tombol utama di dalam kartu kosong */
+
+
+/* ==================================================
+   EMPTY TABLE
+================================================== */
+
+.empty-table { /* Gaya untuk pesan tabel kosong */
+    text-align: center; /* Rata teks center */
+    padding: 35px; /* Jarak dalam elemen 35px */
+    color: #999; /* Warna teks #999 */
+} /* Akhir aturan pesan tabel kosong */
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 1000px) { /* Aturan khusus layar selebar maks 1000px (tablet/HP) */
+
+    .dashboard-cards, /* Selektor deretan kartu status, berbagi gaya dengan selektor berikutnya */
+    .stats-grid { /* Gaya untuk deretan statistik */
+        grid-template-columns: 1fr 1fr; /* Susunan kolom grid 1fr 1fr */
+    } /* Akhir aturan deretan statistik */
+
+} /* Akhir aturan layar kecil */
+
+@media (max-width: 768px) { /* Aturan khusus layar selebar maks 768px (tablet/HP) */
+
+    .sidebar { /* Gaya untuk menu samping */
+        width: 210px; /* Lebar 210px */
+    } /* Akhir aturan menu samping */
+
+    .main-content { /* Gaya untuk konten utama halaman */
+        margin-left: 210px; /* Jarak luar kiri 210px */
+        width: calc(100% - 210px); /* Lebar calc(100% - 210px) */
+        padding: 20px; /* Jarak dalam elemen 20px */
+    } /* Akhir aturan konten utama halaman */
+
+    .dashboard-cards, /* Selektor deretan kartu status, berbagi gaya dengan selektor berikutnya */
+    .stats-grid, /* Selektor deretan statistik, berbagi gaya dengan selektor berikutnya */
+    .data-grid, /* Selektor grid data, berbagi gaya dengan selektor berikutnya */
+    .quick-menu { /* Gaya untuk menu cepat */
+        grid-template-columns: 1fr; /* Susunan kolom grid 1fr */
+    } /* Akhir aturan menu cepat */
+
+    .dashboard-header { /* Gaya untuk header halaman */
+        align-items: flex-start; /* Posisi isi tegak lurus: flex-start */
+        gap: 15px; /* Jarak antar elemen 15px */
+    } /* Akhir aturan header halaman */
+
+    .form-grid { /* Gaya untuk grid form */
+        grid-template-columns: 1fr; /* Susunan kolom grid 1fr */
+    } /* Akhir aturan grid form */
+
+    .register-box { /* Gaya untuk register box */
+        width: 100%; /* Lebar 100% */
+    } /* Akhir aturan register box */
+
+} /* Akhir aturan layar kecil */
+
+@media (max-width: 600px) { /* Aturan khusus layar selebar maks 600px (tablet/HP) */
+
+    .sidebar { /* Gaya untuk menu samping */
+        width: 70px; /* Lebar 70px */
+        padding: 15px 10px; /* Jarak dalam elemen 15px 10px */
+    } /* Akhir aturan menu samping */
+
+    .sidebar-logo div:last-child, /* Selektor wadah div di dalam logo di sidebar (item terakhir), berbagi gaya dengan selektor berikutnya */
+    .sidebar-menu span, /* Selektor teks span di dalam daftar menu navigasi, berbagi gaya dengan selektor berikutnya */
+    .sidebar-bottom span { /* Gaya untuk teks span di dalam bagian bawah sidebar */
+        display: none; /* Sembunyikan elemen */
+    } /* Akhir aturan teks span di dalam bagian bawah sidebar */
+
+    .sidebar-logo { /* Gaya untuk logo di sidebar */
+        justify-content: center; /* Posisi isi searah baris: center */
+        padding: 0 0 25px; /* Jarak dalam elemen 0 0 25px */
+    } /* Akhir aturan logo di sidebar */
+
+    .sidebar-menu a, /* Selektor link di dalam daftar menu navigasi, berbagi gaya dengan selektor berikutnya */
+    .logout { /* Gaya untuk tombol logout */
+        justify-content: center; /* Posisi isi searah baris: center */
+        padding: 12px; /* Jarak dalam elemen 12px */
+    } /* Akhir aturan tombol logout */
+
+    .main-content { /* Gaya untuk konten utama halaman */
+        margin-left: 70px; /* Jarak luar kiri 70px */
+        width: calc(100% - 70px); /* Lebar calc(100% - 70px) */
+        padding: 15px; /* Jarak dalam elemen 15px */
+    } /* Akhir aturan konten utama halaman */
+
+    .dashboard-header h1 { /* Gaya untuk judul h1 di dalam header halaman */
+        font-size: 22px; /* Ukuran huruf 22px */
+    } /* Akhir aturan judul h1 di dalam header halaman */
+
+    .user-info { /* Gaya untuk info user di header */
+        display: none; /* Sembunyikan elemen */
+    } /* Akhir aturan info user di header */
+
+    .welcome-card { /* Gaya untuk kartu sambutan */
+        padding: 22px; /* Jarak dalam elemen 22px */
+    } /* Akhir aturan kartu sambutan */
+
+    .welcome-icon { /* Gaya untuk ikon sambutan */
+        font-size: 40px; /* Ukuran huruf 40px */
+    } /* Akhir aturan ikon sambutan */
+
+} /* Akhir aturan layar kecil */
+
+
+/* ==================================================
+   LOGO UNIVERSITAS NARADIPA
+   (menggantikan emoji topi wisuda di semua halaman)
+================================================== */
+
+.logo-icon, /* Selektor ikon logo, berbagi gaya dengan selektor berikutnya */
+.auth-logo, /* Selektor auth logo, berbagi gaya dengan selektor berikutnya */
+.sidebar-logo .logo-icon, /* Selektor ikon logo di dalam logo di sidebar, berbagi gaya dengan selektor berikutnya */
+.register-header .logo-icon { /* Gaya untuk ikon logo di dalam register header */
+    font-size: 0; /* Ukuran huruf 0 */
+    background: #ffffff url("data:image/png;base64,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") center / 82% no-repeat; /* Latar belakang gambar logo (data base64) di tengah */
+    border: 1px solid #eadde1; /* Garis tepi 1px solid #eadde1 */
+} /* Akhir aturan ikon logo di dalam register header */
+
+.sidebar-logo h2 { /* Gaya untuk judul h2 di dalam logo di sidebar */
+    font-size: 15px; /* Ukuran huruf 15px */
+    line-height: 1.25; /* Tinggi baris 1.25 */
+} /* Akhir aturan judul h2 di dalam logo di sidebar */
+
+
+/* ==================================================
+   LOGO LANDING PAGE
+================================================== */
+
+.landing-brand .brand-mark { /* Gaya untuk brand mark di dalam landing brand */
+    width: 36px; /* Lebar 36px */
+    height: 36px; /* Tinggi 36px */
+    flex-shrink: 0; /* Jangan mengecil saat ruang sempit */
+    border-bottom: none; /* Garis tepi bawah none */
+    font-size: 0; /* Ukuran huruf 0 */
+    transform: none; /* Ubah bentuk/putar elemen: none */
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAWfmNhQlgAABZ+anVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAFlhqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOjM3YTE1ZTM1LWYzMzItNGRiOC1hMWIxLTllNTc2NGE4NGM4MgAAAAOTanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAAAuGp1bWIAAABEanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5pbmdyZWRpZW50LnYzAAAAABhjMnNo5ULHVg+0UG8FYOEhaXdEUgAAAGxjYm9yo2lkYzpmb3JtYXRpaW1hZ2UvcG5namluc3RhbmNlSUR4LHhtcDppaWQ6OWUwZTY4NzgtMmYzOS00YzIyLTg2NmEtNGM0ZDRhMDA2MzQwbHJlbGF0aW9uc2hpcGhwYXJlbnRPZgAAAeJqdW1iAAAAQWp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuYWN0aW9ucy52MgAAAAAYYzJzaJlBRwJeGVZtBJSA3lI/oG0AAAGZY2JvcqJnYWN0aW9uc4KiZmFjdGlvbmtjMnBhLm9wZW5lZGpwYXJhbWV0ZXJzoWtpbmdyZWRpZW50c4GiY3VybHgtc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5pbmdyZWRpZW50LnYzZGhhc2hYIDGpwVqV97m8lwoqDLUR7E+MFT4/1YteNJVkca7F6dkQpGZhY3Rpb254HWNvbS5hbnRocm9waWMuY2xhdWRlLnByb3ZpZGVkanBhcmFtZXRlcnOheB9jb20uYW50aHJvcGljLm9yaWdpbi1jb25maWRlbmNlZ3Vua25vd25rZGVzY3JpcHRpb254ZkNsYXVkZSBwcm92aWRlZCB0aGlzIGZpbGUgYXQgdGhlIHJlcXVlc3Qgb2YgYSB1c2VyIGFuZCBtYXkgaGF2ZSBjcmVhdGVkIG9yIG1vZGlmaWVkIHRoZSBmaWxlIGNvbnRlbnRzLm1zb2Z0d2FyZUFnZW50oWRuYW1lZkNsYXVkZXJhbGxBY3Rpb25zSW5jbHVkZWT1AAAAyGp1bWIAAABAanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5oYXNoLmRhdGEAAAAAGGMyc2iXKkjC1HV8SIehHSHk3jluAAAAgGNib3KlY2FsZ2ZzaGEyNTZjcGFkTQAAAAAAAAAAAAAAAABkaGFzaFggj+RfgPjYo+S5i0LlcTFiZBuEgHa12oQ8fhS6lhE1c8dkbmFtZW5qdW1iZiBtYW5pZmVzdGpleGNsdXNpb25zgaJlc3RhcnQYIWZsZW5ndGgZFooAAAI+anVtYgAAACdqdW1kYzJjbAARABCAAACqADibcQNjMnBhLmNsYWltLnYyAAAAAg9jYm9ypWNhbGdmc2hhMjU2aXNpZ25hdHVyZXhNc2VsZiNqdW1iZj0vYzJwYS91cm46YzJwYTozN2ExNWUzNS1mMzMyLTRkYjgtYTFiMS05ZTU3NjRhODRjODIvYzJwYS5zaWduYXR1cmVqaW5zdGFuY2VJRHgseG1wOmlpZDoxZTRiZjYzZC1iOTU4LTRlNTEtOTI0Yy04MmY3OTgwN2U2YzlyY3JlYXRlZF9hc3NlcnRpb25zg6JjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggManBWpX3ubyXCioMtRHsT4wVPj/Vi140lWRxrsXp2RCiY3VybHgqc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5hY3Rpb25zLnYyZGhhc2hYIGKHMiW0B891t0c7o+wJZGLgGybS0iKf5dGGsd21LmJEomN1cmx4KXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaGFzaC5kYXRhZGhhc2hYICAHqd81khdaxC9AbYuy/kNE0fDAekqlOj1UxrT2guM4dGNsYWltX2dlbmVyYXRvcl9pbmZvo2RuYW1lb0FudGhyb3BpYyBGaWxlc2d2ZXJzaW9uZTEuMC4wa3NwZWNWZXJzaW9uZTIuNC4wAAAQOGp1bWIAAAAoanVtZGMyY3MAEQAQgAAAqgA4m3EDYzJwYS5zaWduYXR1cmUAAAAQCGNib3LShFkCEqIBJhghWQIKMIICBjCCAY2gAwIBAgIUQOWgCu7COdC+uIP6BkIFPWdVEwAwCgYIKoZIzj0EAwMwSTEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxLjAsBgNVBAMTJUFudGhyb3BpYyBDb250ZW50IENyZWRlbnRpYWxzIFJvb3QgQ0EwHhcNMjYwODA3MTg0MzU2WhcNMjgwODA2MTk0MzU2WjBEMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEpMCcGA1UEAxMgQW50aHJvcGljIENsYXVkZSBDb250ZW50IFNpZ25pbmcwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASYegpry1AYBRTVNL1CpTlbROnY3dey+UrsF9C3phYrATN3ZHf93Mo8RQN0KOUuOn19P4oWNFWe5n2/She9N7eTo1gwVjAOBgNVHQ8BAf8EBAMCB4AwFQYDVR0lBA4wDAYKKwYBBAGD6F4CATAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFM5R4gSBTmRbI/jjxM+aPpzB11zCMAoGCCqGSM49BAMDA2cAMGQCMDFzHRSeAXrSy1WOzkbhPZ6Km2wGTmZ/2gK18k8BQGXyqz88Rdrz6CTX9flAnYNVxgIwcF9c3fVhqmJKpi+UhasNUMko69cyX6STPfta3Q8EjyzDjzoyrol46FP6VFHhvUcJoWNwYWRZDZ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2WEDGmKc6AxaGOnUXJX+V3bptqpqot/OCwrIUG8GbbU5a/+ne7/gi9HPpd+neXvwlBXwEvYWDejArnJ++Yhv/zJxkzHK1XQAAAJBQTFRF///////+/v////7+/v7//v7+/v79/v39/f79/f3+/f39/f37/P39/Pz8/Pz6+vv7+Pj08e/n497O0cer4LJMt7CZ1KVAz545xpc3ppp9sYs+XG+IJ0JlCS5ZCCtVBitXBilUBSxXBSpXBSpWBSpVBShUBClVAyhUBiZRBCdRBCVRAyZQACFOAB5LABpIABZC3A+aXQAAF89JREFUeNqVW4mCoroSjSiLYQftZRREbRVl+/+/e6eSAAHpmXeZnpluW6mTWk4tJMzUL659x4bvOB9/wSfv0t4uXmScz+6z9Gb9YkoM0/7VPsik+PmL2o/GBMBcmgSk36C/23AnJj7KfwO69PIIYGNaBnONX1Q4+46JL10+p1eECrj2l00F/UWD3LScVRIz11zSIv9NLYy/65PP1sB/WfT8d5bLkl3MLP1F9vZ5bdHsXb/s/W09bM75221md7BYvAMC23m7MfvFambvWsMd+TtODcf4LR9jY8RlGwCwiw132VJspmE+twJb0tjfvG6mkY1NGtjtIntwck0QVyv9183//Z53jD1LOBJAChVYi0D57yvQVfTfriGsmOkaCQEgIzjO3Haav/9Fo0y3O/8XB7CJpskHUgEgtWxBSVx36jHcGJu71+gETLs3X4DIlTg+IWdJovD+YLdTKrAnwnXT8iUV8l8djP9OAW/v6S2w2yVTQpwJG+zC332C/UfLT6jcYqkCkDLX+tVz+bsYznpAbNTYnDfZJA+9KWhjWDIGxOVatmNt5gtjC4ucJQn2rtupWMmH7O3TzLJsKx0ABA4yg2PyxaBdkKHnY6Z56v+ZxU1zZVgBS3YjgFUQbfTVGkv1grrWGiqmW8lZm5Zpa++0B7JYi5+MPu9Ya9vVDAAqWkepa67XeKszfni9GP+SMnqHHMlo4zjh4hXQF/0Jt1bvamvXjHYfGgA3EJ7IbNP2xUdC7d8gCIYfw9CXGPlUA1Caxf55rRUAeJyryUcYeoFgA4eb/77L1pnXV+Jbx4r3/7iSFR8qgVSTv4scI4IeTB+/j9J/3cXk9hJfe3Z8KLumbpq2bZvZhVe66phYvgRtk/wBwUfKApGYEwPlUXTIu7p+uwNddV133XG/cbeDQ+i+76xYvM8eWZ5n71dZHmI4DNxqvTGx/s8PuqT8XbR2Vwl9Ay+FiqP9sc6Wr/qQsKGI06kCirAc02csyer8fr3i63qiv7jov0u5ZyzwRHAZqMSkfInhA0RsSpVQfeaFuAsQiHto1/l6zdsDY55naaGnJxCkNB4CweV0L253CYGkX+/3U71nIapQgGRT+R9kAFQDIiYJio9QCVl8vOT3H7kIIZtuhfWzMJSRxPWCROffkH03+a0oBAD1+esJyMP+HSiDPjQAMAD3lE9+7JiozoBgX59HFcjb5I9j6NGvbab1Mmyam9jGjLOquBVXDcH9VCWmryxGBDCRj8KcXFACiAxan2Vuw2OVi1vc8XFYEkrIuj0tg6s/cvls6oiMOT47tDkp4K6A3695dQxXiuAc19p9fXx+6vItkID6kZyALrpLRveQ3iQ86V4mG39K8+y9KHVC+igA3EcAWXNgrqMYkKVfn+IieZ+weuDIoFQAwMCbFQDs2xMBUL5EOngcI/ZWCr41JmuYD9jv/Qdx/WRwAV/ai6/jzxGAkM+HoFQAKMn7LK1P0gmUJ5zO0CPbzCtS9pasCMDpIQFIDQgAoS09cLX7GhB8kv6dAOtX16fUADMlAHUTqJJi4FQffbb9R83PTUMqTwMA7xEAtsJ/ky+6JAKS79qjfCByTUskuBGAZBMJIDTmZR5jb9WTAHAbxd9lFAb47da0oIAvBeGL5Hu2pv+Pz1SyXG8C6X/CBa49AK7nQSbrLqa5xEb6wMgBSgOBRUylFEAAvnYR1m+6mvyPz6SnWQngcrpKJr1cFAB7AKCEaslIld/KCXUSlQCYSebuAZD8IGATTvjcBX2+FgAuFxF/9A8QkA+81+NvBaM9aGC8TkoDjhl8aPJdF/yj6f/zCxZgI4BMILgI8afLnQAYemMnys33SrAPw1H+vTcBSPiPkv+h+O9zFA+nBKSNsRoBkPQzAJzP0gf89UIfPxuJWKGMgjET3iUAEDgCvgcAY3tsun7E4NqKI2NwwkyIFpe4GwCszHnh/N4ohrMwxDciDOEuwQAAuraF/M9h+Z8AZcc7VyySSQBwZIXgInlgpRfJ075Alv+rQQNzHiAmdNn+zxdB2Lm+bwW7z/4SCECK6JSYZw8mOAv5Ugsn0oBn8XmrwPi059IAKDK+zwH8EQYYc4JCQPKTr93KGQBIA5xOGf1/PWcUBfNhidbFci0XnO4TFQgfWA8A/uwYuoJkIp+SAuoEAPAo2xuSB/q1CyTZwITvkw7NE6whF8wACA2kf+iCMCv6GBj5Q5BiYAZgSZhgDMOrLl9qYGHOMXNCCeAm6gHhgsoEIdqeQAL4ioyekZQGUhdJOaA0tWOOueU9gNPlrMJQATC280kuMxd94PYYEfQA6N0JAdijCI+GlAChCXPwyk7kB2atNSc89RpARSSIyNbyzjsRTQFIK9z7MFzTWDAiACmLhniEzL3g5HgnExQlAz4QUX8JW8wASCrUJzNUn1mTeoDUoACQD1gevJAABGw35ISUUUgkH9D/F5GxPUaBiMCTIEMZhr7B7an3iZpwEokbXwGQ2r/3TEj+A9MnwgetaJCPiAw25BFYvvjR3szDUJrh1GtAm5D030zmEmMUSCPgKxdUDAC25QoAyAl/evmBi06IxBOAj2jlilQrTHABA/aReLlOAbARwHR4sNEBiKL6fs9VSUbZIBEAEgVAyt8J4YqiHWusB6T7SQvMiYj1M6L5MKQPw4fygrtKRvJjtrGDDxioSwAB34mUNMj/jBXTqFzQ5yKdB/jC8GcyF1caeDyU/u/3oSoWY48YRGjERIh/PgKb2pRBPhTgT+oBKP46AcDm42F9hsn7j5IGbgAgIVBnSCawxFs2REYRi75kPAbUpmgB4XJ7zIZk+bMMBfpnAPCPSbgCcLtNeSCQpt1YuHXKrA8CEK31Gu1rhxbFsX0+ArhINxgBmDb/J4BwBNDHwmACeDe6eDeRnLxn7jrW5SNKVr5UqnLCywDgREQUMnvehswBrAWAXGmAHOEhTQAn3LI4RTRYGxZsYrLAKhxLJOh/w4lHk4TxoSq+XK8qI537qvgvGiBYawMAuvx5E9dDXCIMfQIQHffM89e2rI0gKfpSAJCOt9wyaDAgJgkyGV0v1/N1iQfeAbChX5gDgAqEBjgByLqDh7y09ZyISAB8IOUjH7i2HXosOaIH90cqBgJJg7IoNfSJ/qQvGKp0tOcEANcIoGdCFmdVc0hY6DvESMgCygJgBrQoIQu/b+d6BCAakrPqDWQ6tudP1hadsMtfTwWBwlGaYE0AjtWppWmRT8XJnglfFAnA2gYrLL89ZQ0AWENrpuVDqog2fB71jC0BKCoB4HW7vcgbBQBb+ED1KuvuQEW5b6tg+CNGBLT8rM7yjDSwEgDy6zwdh+v1ku2nMxIdwEsAuEknXBGA+lk9T3W2Z6vQZcIViY4sP6DB2BncJzRgLAC4TomIKdnMnD8oJCIqKolAgHjdVDLiEgAAvbpDzHzPJwA7NzAdh32XNVW/AkA4+MBQECIaVRRMExB/s8A2lAB6CAJARybgAkB5uz2rquiO8EVq1f7QZM4MD60MuLPQwBSA+A3K8uoYvj8vZsNjKdWqbWYAyAhFRzXhRmrgRb+r8iaD6dfWnz+BuQ0gP7veLzMAma6BswBg8PfHuLM6WRBR8Xr2CG69CUzmSBPIK2+PMaonhIIrJmKIOAIwiQLZYKqKhKJgY7DFsrzvSWi8YggNCABVH4qCB0y21QEAwSEMzDhhop0m+QOAcARwElQMHiDdHETTYE+fI0/7pDVDGKbNTQkRofhSAHBTGQX4ot+dum/U5wjBpETWUdd5zgMiGYhIIAAhB19vxgkRnzihY8Yrzn2WZFVZDRqAD5AThpYjfKD3jaoqmzw2PVuNJIUCLu8mOItBMbkiMUToueso2Cwy4ZZav4S8JDw25eCF0MBT+oCjNFApAFXRfrMQ6S8/369TAOYIgOKPOJmICAWTbQVpLAiZa0TEZZHootqP1qg4Dl3RW5rCUAAIHEHFPQD63e11jMCAhya7/wgAl94HxKS0yZR8OanLnseYOTTVjlROZLMoQMe7/4JTwwnaWzUG4vNZNEeTWyANAvBU/vl6lbcORVh4rE8/SHsXVflJDdDQPetH9YTuJGb11MEPAMadNApBAABIbMEWNuhVQD73LGqA50zyAAF4CgCvK9yQJeXlTk6oys+sSYmKhWKGOS255+mMgDESmuSoXSdMy4xMFv17UeqrbDBYAdxTUpmzNS0gkwYQAAp6AEIxeBXdp+xCHgnzuWd7pBg1LL+SAsiMNNX6HCbqpiUnk7anLOLKjo849tDl1asarqLdUxx6WNZPDwB/YRpPkBDCnOZhBOACZfkIpTi75+Oc7ZLdsyTwIjFV6gFYW8oLK4MRPVBaVgDQXQQxAmECAMmAi/lV/hwvmCYCJjFTU2UPLG36HE0kFHPuR72oKCgEgoCmamqgDZHOijmIgjXIzJfPQvqeN96sklwkhJfknCdsgPWj4iorDcCzUQDENJ4y3jWDW/hs7RoHGpJdVVl9elChRvLFNI8AGGy7ipMVx7sTSmyWiILd0PJScZeLGBTMR+kIudRfHdpC04AA0Mp4p4xzvz7zmFEMJIWcDgoIWVXt2XaY6goAa9fxDuARAtAisaHQROs7dDmJweJDVxevF7k8MNRZbAaI0KS+zE3Q5nIqLmaqDZUusNVBPra7X3/uOfJWyrxxqklbXuzACg+kFgKQN6QD7jKty0g95u/z7lHIqKtuxMaOJR4oVXMA9360fnpksetDPsqhn1shnlVkdYPqxUh22kg94CFKiIY4iwA0WB9ZweV6nxXDDIe6vRWSecqOOk9vG2fQyxTAqX8wgi4W0bL2VyCsH3oRoVE1WD4L0uEx11ca0UIi8ERLAMix6mtTUs/DadIyPBBI6QnooQEEwTyVMBQ4HlRQLQGg53IwANt6qE/IAYn92uM+pOV/DiPldGUhq8THNiMAwgQlRXRDlQWYYq8pAZ7AUkB4QmT10yDCQ1E0/7xeMwACAhwg9G3fEy9drkX2gPiIoaEblv9J+22QP1DAZz8ibdB8VaS+F+oLRMpWV8LXHnYgCM2tBPV3hMAKKFe9nq8pAHq6CcJeBSFzoNyiOOd1o8SPy/9I0UH5YFx6QH3Oeh8oifRKUWf6KDQjzRN6CC0M8SrIWX0/hIZl5yIBdPSYEx3QPU8o20T02LHIqu5NPC3fAEK43wMVhALgSQ0g4ssW5T5uYbBkN4EgDdEUt4IaApsa0Jfwg5sCIEYJot4IxXPzIn+8rZ60b7EgtEj99ARJlQ4EgAgPAKqiop6HoeOYQyAtHLumoIYgojFlc5sCKGThitSU11n2bBdWD+3zwIOC8A6YjEqHdjTBSxB/Wbb5Nz4Z+uS4OgTadbA/tnVeioYAUp+v8nXrfeD2oIwdUmxVWdFm3/F09R8k3sRtGW5yP6kMPUZB3SOAEgT4VRQI59WIKaaNEVn3yusctIpkBZbsiahA+whWE+rPmhepceJ6u8QxPHgXWfJFDHmmOu0yaqB+CQCEAY4F74E0mJPuMoUQH16ov1ow2749P26lzAVIkKf6YKA7e2QPsUcj1AJ/l8Zke3TU6aFuTvmPKNUpe04AQAeq3gYndMdv3GUVblmgWYJiCMzUVjmZ4UiEOAD4qZLo0JUg9T3SXLJTgY/Fp/1i9semPmVqT8JZNArCBFyFoaw/nhQP5U/d5oe9dAaoYYSQbBjfl11el/ukuaFTF05YPFG3g32zmnpWfEDTfcBC3MdLDiS+f5p9ku2K5oRVLQG8xFU9y/zRdscDMWFo0B11OySH7nRtcMdnqXwApfsB8gXrR73xwTrIQQg7luyPr7ZC6652ZfTPA0XgCh54luWrvypVgBTPpnsJb7A9zRIfqc8sxNqpyRE1Kgwfj6ys4QYxlrr7kHsZSPfbgAAdspYmB0q43BaBEvWUSwDQQNd1TV2Vt6IsRR0mW6/XrXjUbXZATlpBaLKTj0doHkXVSok++TkAeBRichOkcl8PSCdiHi0emqnvp1M/dybGhvdl2fn+qBvaU4LyJd4fDsdj2QJH29TPIqcEDDs8wLV53bZHimpf8aN4QiOqlfLx6Ino/hB+KXeyEIQkMHwK20PRPHK5+Lvwe5RpENy2oIvj4fCdyH0suPw4SQWOvGm7tgWMorg+4I9l+WygBiIiiEWqpLIu9bYw/fP6Q/0CirRb1ij1k/xd4hoefPH7iCR2ykFSV1qzlFznR0jep0kckVy5mdb3fbXNzYgkjpy2k9XVrSCrFHnVvg5I6xZpQTyl20ce2yPqZRgWKJo3Ky8V1lerTw4Zuf2tOOUwQEX7yHIlOVTCkNa4tlMYP3r9drsoTiQMGKW+5T9FfmlEcnOFIT4/vnZAkGa1igLUIYEr5O/SACU5xFftI4PS8xeW3WRSdDTs5wt9fz4f4PbWjEd0AgZp45gBRf045WXbSAhwtC/avkLh04qyvKHWVWzkQeMbEOG+mht0Dv8h2d97TTSuOEk2psMXdlZH+yNhlRbaynfzOP0+HG9t15yyF7TgUn+VQgk7gE1L4YQ0PBBb2RKyPQrJOstp4bhXmoSjVtP9N7kZ+GWyt3rcJkuOk3cUDHV21LUWwSLHqm0r6Dxlqy3VeJ+7CNUZAaCej3aSCe0nh1d9rrv2eOjXTfYkwVkFx8LNyaGXhlSOaXFf+C48tahqem8tjReTc4TJN5wCC6NZMW0d+dyhTdjHqz0yZ0LORy9/Z13TwNtSITwWHp3RvRB4t/zeliTe87TRpP703KLBBmWNtiXnL1D1ICg7YUfiYPzqkHVdtrfogcgHdfJUvVibGNaPDKp1uq48UvEglZZRTFMw5RRLdZeTeN9fc20nEZsd+ODBijZEtuiKCqoUgeNWkx+SQUVSO8iahMyQGKHDPR7RPkKqRrpGpFFOwhsSTXRCY54Hii1JaEGg7V7gJnuflq8dchuEcdtQ4SeKRYGiE4YVyYg60BV67Q+0GBbt5EKtjahsD6nI+ke4f40lFzKtVEVRN/VRZtd+1zGbPDab7GFYmw4VL5S/u6YCBioWAATpCSCQGyxSESjQW+1TZtMOe5StxkGYl9Ju1zzz8lWKhur1zEFjlFjJjTyTGfON29pzu9EdLNOHGizcDeGHHPWSGJ7QRI3oIlXuD+kKa48NO4B7WPEBXBzusfYa0qmrRt3+ehKJgshJbzzki9vGf9veb3khF7mUMFQFZcknwYBVm44WG+5TlCsRN4LA92M4XvSNuvmJdyJ90LvheXUvnZ6xvIvUli0nlmyKziE1CAzkUIUAIQqGkiDEjLYMOY5lmK6PygPh26h0TkVV8Wh6n2GBvzUtbbPY5CTKuK2Xs4WjFFSTSQpAOFbUoMni+YmIjlaObcTwP5pZY/V5KQGik8TSS5ABSXf9t03UE9msP/bE3098if+dIDQlBcAYbaX0gGKoo33WtHHI5SECsKDugjo86ap7wcF+iFbkbweuxocXfPlMCoG2bR5uBbccjiUYgRT9qpryO3LpyXFs2n56bIk1ClgdXCAVj06XG/1m//e789mxxr+ddGGiaBBZBRSTU5CLCsiluSc9MvJFhUTxBr4SKQC2284fRs2PUvZnzdj7SQjGZ49UxMctWTHAGHAIijrfoJ1DXzETHW8neBChgxbdseeHSfhvx6vYW17kvx3wcFA0eD0GjzrRWM4VQTIbC8yQrBk1gFtTPZz75Rjm5FjT7Mjn4sGaUTdkz81WFHCuj3plHKXEdkAHF0J/dk7v/fzWbAclW9hRsHzcUVMU93zf3sRa3/iRIJcHnmPyv55SWtpEyJbfzf92DHBjmeuV2VuAxAeGvbacvwudKIb/h5NWi4e8mGlZ8IZU7S5dz89canuD+PveudE3+OJZMy1dDyc/p/vP1TkTm+b7H5F4mtLvEeZLJ2/1XXv83b7qQ2yOgM8PSZkyY/Q+sbbNWDzhsNaM/b+Hht9ObPU0vHDWkP1qgV4T4ikTgp795uSTXVuLh+eY+dvBwKVzfrMzurSNYT85sjIp8qaHJ5bORAse5H85lrh4QlU7dGujy1gt3nvpoB6fn09eWNPUFZl+Ym/xSCszDWpy9H3y+p02S4qcH0nujWDb0yjlk2pZ3/2y3Y4LdDyHb2f35uI8KDOXDv/N9Y23bfRDfKvpeezhNoYWRStLE2a5lrVwX/2cO+ebgZXfj8T/D39xNEHCOmKFAAAAAElFTkSuQmCC") center / contain no-repeat; /* Latar belakang gambar logo (data base64) di tengah */
+} /* Akhir aturan brand mark di dalam landing brand */

@@ -1,0 +1,2 @@
+ALTER TABLE soal -- Ubah struktur tabel soal
+ADD COLUMN prodi VARCHAR(100) NOT NULL DEFAULT 'Semua' AFTER id; -- Tambah kolom prodi (teks maks 100 huruf, wajib diisi, bawaan 'Semua') tepat setelah kolom id
